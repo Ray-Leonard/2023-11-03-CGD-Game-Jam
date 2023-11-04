@@ -33,14 +33,15 @@ public class TunnelRotationControl : MonoBehaviour
             }
         }
 
-        if(!Mathf.Approximately(targetRotationDelta, 0f))
+        float frameRotationStep = rotationSpeed * Time.deltaTime;
+        if(Mathf.Abs(targetRotationDelta) > frameRotationStep)
         {
-            float rotationAmount = (targetRotationDelta > 0 ? rotationSpeed : -rotationSpeed) * Time.deltaTime;
+            frameRotationStep = targetRotationDelta > 0 ? frameRotationStep : -frameRotationStep;
             // apply rotation
-            transform.RotateAround(endWallCenterTile.position, endWallCenterTile.forward, rotationAmount);
+            transform.RotateAround(endWallCenterTile.position, endWallCenterTile.forward, frameRotationStep);
 
             //  decrease targetRotationDelta by the amount we just rotated
-            targetRotationDelta -= rotationAmount;
+            targetRotationDelta -= frameRotationStep;
         }
     }
 }
