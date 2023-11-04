@@ -10,13 +10,13 @@ public class StatManager : MonoBehaviour
     public GameObject yarnContainer; //displays yarn ball collection
     public GameObject healthContainer;
 
-    public GameObject deathScreen;
-    public bool isDead = false;
+    public GameObject deathScreen,winScreen;
+    public bool isDead,hasWon = false;
 
-    [SerializeField]
-    private int score = 0; //n of yarn balls
-    private int winScore = 5;
-    private int health = 9;
+
+    [SerializeField] private int score = 0; //n of yarn balls
+    [SerializeField] private int winScore = 7;
+    [SerializeField] private int health = 9;
 
     private void Awake()
     {
@@ -77,8 +77,8 @@ public class StatManager : MonoBehaviour
                 }
             }
         }
-        if (score == winScore){
-            Debug.Log("win");
+        if (score >= winScore){
+            win();
         }
     }
 
@@ -100,13 +100,19 @@ public class StatManager : MonoBehaviour
         }
         if (health == 0)
         {
-            Debug.Log("you died");
+            death();
         }
     }
 
     public void death(){
         isDead = true;
         if (deathScreen != null) deathScreen.SetActive(true);
+    }
+
+    public void win()
+    {
+        hasWon = true;
+        if (winScreen != null) winScreen.SetActive(true);
     }
 
 
