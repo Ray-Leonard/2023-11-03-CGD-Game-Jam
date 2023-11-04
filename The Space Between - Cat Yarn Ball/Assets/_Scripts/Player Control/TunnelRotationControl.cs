@@ -33,16 +33,25 @@ public class TunnelRotationControl : MonoBehaviour
     private void HandleInput()
     {
 
-        if (!playerControl3d.IsGrounded)
+        //if (!playerControl3d.IsGrounded)
+        //{
+        //    if (Input.GetKeyDown(KeyCode.A))
+        //    {
+        //        inTunnelRotationDelta += rotationStep;
+        //    }
+        //    else if (Input.GetKeyDown(KeyCode.D))
+        //    {
+        //        inTunnelRotationDelta -= rotationStep;
+        //    }
+        //}
+
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                inTunnelRotationDelta += rotationStep;
-            }
-            else if (Input.GetKeyDown(KeyCode.D))
-            {
-                inTunnelRotationDelta -= rotationStep;
-            }
+            inTunnelRotationDelta += rotationStep;
+        }
+        else if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            inTunnelRotationDelta -= rotationStep;
         }
     }
 

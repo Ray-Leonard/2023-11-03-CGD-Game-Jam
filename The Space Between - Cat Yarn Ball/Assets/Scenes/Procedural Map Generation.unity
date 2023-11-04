@@ -645,6 +645,7 @@ MonoBehaviour:
   tunnelLengthMax: 40
   currentHole: {fileID: 0}
   interactables: []
+  holeSign: {fileID: 0}
 --- !u!4 &993930879
 Transform:
   m_ObjectHideFlags: 0
