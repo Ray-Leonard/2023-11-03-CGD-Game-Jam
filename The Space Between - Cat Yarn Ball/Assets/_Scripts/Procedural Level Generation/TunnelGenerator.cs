@@ -16,6 +16,9 @@ public class TunnelGenerator : MonoBehaviour
 
     [SerializeField] private Transform currentHole;
 
+    public GameObject[] interactables;
+
+
     [ContextMenu("Generate tunnel")]
     private void GenerateTunnel()
     {
@@ -45,6 +48,25 @@ public class TunnelGenerator : MonoBehaviour
 
             // add reference
             tunnelParentScript.segments.Add(segmentTransform.GetComponent<TunnelSegment>());
+
+            
+
+            if(interactables.Length!=0){
+                //randomly place item
+                float randomN = Random.Range(0f, 100f);
+                if (randomN <= 10f) //10% chance of generate item
+                {
+                    int randomIndex = Random.Range(0, interactables.Length);
+                    int randomPlaneIndex = Random.Range(0, 11);
+                    Transform plane = segmentTransform.GetChild(randomPlaneIndex);
+                    Vector3 localYAxis = plane.forward;
+                    Debug.Log(localYAxis);
+                    Vector3 newPosition = plane.position - localYAxis * 2f;
+                    GameObject newItem = Instantiate(interactables[randomIndex], newPosition, Quaternion.identity, plane);
+                }
+            }
+
+
         }
 
 
