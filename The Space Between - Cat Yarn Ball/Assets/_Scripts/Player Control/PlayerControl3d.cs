@@ -124,3 +124,12 @@ public class PlayerControl3d : SingletonMonoBehaviour<PlayerControl3d>
         }
     }
 }
+
+[System.Serializable]
+public class PlayerControlSettings
+{
+    public bool canSwitchLanes;
+    public bool canJump;
+    public bool canRotateWorld;
+    public bool canMoveFoward;
+}
