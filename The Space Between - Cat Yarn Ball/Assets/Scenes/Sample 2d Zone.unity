@@ -5534,7 +5534,7 @@ GameObject:
   - component: {fileID: 522535372}
   - component: {fileID: 522535371}
   - component: {fileID: 522535370}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8827,6 +8827,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   yarnContainer: {fileID: 0}
   healthContainer: {fileID: 0}
+  deathScreen: {fileID: 0}
+  isDead: 0
   score: 0
 --- !u!4 &782479179
 Transform:
@@ -23972,7 +23974,7 @@ GameObject:
   - component: {fileID: 1910747620}
   - component: {fileID: 1910747619}
   - component: {fileID: 1910747618}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: Floor (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
