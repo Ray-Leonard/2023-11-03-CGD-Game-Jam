@@ -990,9 +990,7 @@ MonoBehaviour:
     type: 3}
   tunnelEndWallPrefab: {fileID: 8888723832830869985, guid: b479d0f89c75db147bbba5eb28083daf,
     type: 3}
-  tunnelSegmentLength: 2
-  tunnelLengthMin: 20
-  tunnelLengthMax: 40
+  baseTunnelSettings: {fileID: 11400000, guid: e9aa7279d39a4fa47879c339d46f1980, type: 2}
   currentHole: {fileID: 0}
   interactables:
   - {fileID: 2149981864315834989, guid: 7b6a5d8ad5f48fa4cb97e0a399d9df5f, type: 3}
