@@ -24,6 +24,9 @@ public class PlayerControl3d : SingletonMonoBehaviour<PlayerControl3d>
     // for snapping to the lane
     private float targetXPos = 0;
 
+    [Header("Zone Settings")]
+    public bool canSwitchLanes = true;
+
     protected override void Awake()
     {
         base.Awake();
@@ -41,15 +44,20 @@ public class PlayerControl3d : SingletonMonoBehaviour<PlayerControl3d>
         // move forward
         transform.position += new Vector3(0, 0, forwardSpeed * Time.deltaTime);
 
-        // switch lane
-        if (Input.GetKeyDown(KeyCode.A))
+        if (canSwitchLanes)
         {
-            targetXPos -= horizontalStep;
+            // switch lane
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                targetXPos -= horizontalStep;
+            }
+            else if (Input.GetKeyDown(KeyCode.D))
+            {
+                targetXPos += horizontalStep;
+            }
         }
-        else if (Input.GetKeyDown(KeyCode.D))
-        {
-            targetXPos += horizontalStep;
-        }
+
+
 
         // check if targetXPos is out of range
         // 0.1f is to account for float point calculation loose of accuracy.
@@ -89,9 +97,9 @@ public class PlayerControl3d : SingletonMonoBehaviour<PlayerControl3d>
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.transform.parent.TryGetComponent(out TunnelParent tunnelParent))
+        if (other.transform.parent != null && other.transform.parent.TryGetComponent(out TunnelParent tunnelParent))
         {
-            currentTunnel= tunnelParent;
+            currentTunnel = tunnelParent;
         }
     }
 }
