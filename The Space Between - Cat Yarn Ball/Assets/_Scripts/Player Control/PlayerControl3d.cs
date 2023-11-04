@@ -55,7 +55,7 @@ public class PlayerControl3d : SingletonMonoBehaviour<PlayerControl3d>
 
     private void HandleMovementInput()
     {
-        if (isGrounded && canSwitchLanes)
+        if (canSwitchLanes)
         {
             // switch lane
             if (Input.GetKeyDown(KeyCode.A))
