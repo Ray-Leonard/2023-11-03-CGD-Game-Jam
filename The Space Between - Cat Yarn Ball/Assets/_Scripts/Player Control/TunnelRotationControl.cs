@@ -5,34 +5,42 @@ using UnityEngine;
 public class TunnelRotationControl : MonoBehaviour
 {
     [SerializeField] float rotationStep;
-    [SerializeField] float rotationSmoothFactor;
+    [SerializeField] float rotationSpeed;
 
-    private TunnelGenerator tunnelGenerator;
-    private float targetRotationAngle = 0;
+    private float targetRotationDelta = 0;
 
-    private void Awake()
+    private PlayerControl3d playerControl3d;
+
+    private void Start()
     {
-        tunnelGenerator = GetComponent<TunnelGenerator>();
+        playerControl3d = PlayerControl3d.Instance;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Transform endWallCenterTile = tunnelGenerator.CurrentTunnelParent.endWall.CenterTile;
+        Transform endWallCenterTile = playerControl3d.CurrentTunnel.endWall.CenterTile;
 
-        if (!PlayerControl3d.Instance.IsGrounded)
+        if (!playerControl3d.IsGrounded)
         {
             if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
-                transform.RotateAround(endWallCenterTile.position, endWallCenterTile.forward, rotationStep);
+                targetRotationDelta += rotationStep;
             }
             else if (Input.GetKeyDown(KeyCode.RightArrow))
             {
-                transform.RotateAround(endWallCenterTile.position, endWallCenterTile.forward, -rotationStep);
+                targetRotationDelta -= rotationStep;
             }
         }
 
+        if(!Mathf.Approximately(targetRotationDelta, 0f))
+        {
+            float rotationAmount = (targetRotationDelta > 0 ? rotationSpeed : -rotationSpeed) * Time.deltaTime;
+            // apply rotation
+            transform.RotateAround(endWallCenterTile.position, endWallCenterTile.forward, rotationAmount);
 
-        // apply rotation
+            //  decrease targetRotationDelta by the amount we just rotated
+            targetRotationDelta -= rotationAmount;
+        }
     }
 }

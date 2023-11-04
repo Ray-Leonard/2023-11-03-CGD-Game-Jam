@@ -17,6 +17,8 @@ public class PlayerControl3d : SingletonMonoBehaviour<PlayerControl3d>
 
 
     private TunnelParent currentTunnel;
+    public TunnelParent CurrentTunnel { get => currentTunnel; }
+
 
     private Rigidbody rb;
     // for snapping to the lane
@@ -82,6 +84,14 @@ public class PlayerControl3d : SingletonMonoBehaviour<PlayerControl3d>
         if(collision.gameObject.layer == LayerMask.NameToLayer(groundLayerName))
         {
             isGrounded = true;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.transform.parent.TryGetComponent(out TunnelParent tunnelParent))
+        {
+            currentTunnel= tunnelParent;
         }
     }
 }

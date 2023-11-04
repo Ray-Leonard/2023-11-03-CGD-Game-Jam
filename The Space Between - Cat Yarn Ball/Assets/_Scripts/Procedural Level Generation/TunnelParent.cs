@@ -6,5 +6,4 @@ public class TunnelParent : MonoBehaviour
 {
     public List<TunnelSegment> segments = new();
     public TunnelEndWall endWall;
-    public Transform hole;
 }
