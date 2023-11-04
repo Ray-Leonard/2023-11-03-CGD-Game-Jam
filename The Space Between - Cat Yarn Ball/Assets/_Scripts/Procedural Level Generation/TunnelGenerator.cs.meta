@@ -3,7 +3,13 @@ guid: 206b09b0b789c0c4088b56b5e2731d9a
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - tunnelSegmentPrefab: {instanceID: 0}
+  - tunnelEndWallPrefab: {instanceID: 0}
+  - baseTunnelSettings: {fileID: 11400000, guid: e9aa7279d39a4fa47879c339d46f1980,
+      type: 2}
+  - currentHole: {instanceID: 0}
+  - holeSign: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

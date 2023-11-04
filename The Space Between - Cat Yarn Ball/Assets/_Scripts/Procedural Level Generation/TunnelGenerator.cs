@@ -10,10 +10,7 @@ public class TunnelGenerator : SingletonMonoBehaviour<TunnelGenerator>
     [SerializeField] private GameObject tunnelEndWallPrefab;
 
     [Header("Generation Rules")]
-    [SerializeField] private float tunnelSegmentLength;
-    [SerializeField] private int tunnelLengthMin;
-    [SerializeField] private int tunnelLengthMax;
-
+    [SerializeField] private SOTunnelSettings baseTunnelSettings;
     [SerializeField] private Transform currentHole;
 
     public GameObject[] interactables;
@@ -24,17 +21,17 @@ public class TunnelGenerator : SingletonMonoBehaviour<TunnelGenerator>
     private void Start()
     {
         // generate first tunnel.
-        tunnelParentQueue.Enqueue(GenerateTunnel());
+        tunnelParentQueue.Enqueue(GenerateTunnel(baseTunnelSettings.TunnelSegmentLength, baseTunnelSettings.TunnelLengthMin, baseTunnelSettings.TunnelLengthMax));
         // assign first reference to player
         TunnelParent currentTunnel = tunnelParentQueue.Peek();
         PlayerControl3d.Instance.CurrentTunnel = currentTunnel;
         // generate second tunnel
-        tunnelParentQueue.Enqueue(GenerateTunnel());
+        tunnelParentQueue.Enqueue(GenerateTunnel(baseTunnelSettings.TunnelSegmentLength, baseTunnelSettings.TunnelLengthMin, baseTunnelSettings.TunnelLengthMax));
     }
 
 
     [ContextMenu("Generate Tunnel")]
-    private TunnelParent GenerateTunnel()
+    private TunnelParent GenerateTunnel(float segmentLength, int lengthMin, int lengthMax)
     {
         /// generate a tunnel parent to hold the tunnel, at world origin
         Transform tunnelParent = new GameObject().transform;
@@ -49,14 +46,14 @@ public class TunnelGenerator : SingletonMonoBehaviour<TunnelGenerator>
 
         /// tunnel generation
         // generate random length of the tunnel
-        int segmentCount = Random.Range(tunnelLengthMin, tunnelLengthMax);
+        int segmentCount = Random.Range(lengthMin, lengthMax);
         // make a list to hold the tunnel segments
         List<Transform> segmentTransformList = new List<Transform>();
         // generate tunnel segments to make a tunnel
         for (int i = 0; i < segmentCount; ++i)
         {
             Transform segmentTransform = Instantiate(tunnelSegmentPrefab, tunnelParent).transform;
-            segmentTransform.position = new Vector3(0, 0, tunnelSegmentLength * i);
+            segmentTransform.position = new Vector3(0, 0, segmentLength * i);
             
             segmentTransformList.Add(segmentTransform);
 
@@ -86,7 +83,7 @@ public class TunnelGenerator : SingletonMonoBehaviour<TunnelGenerator>
 
         // generate end wall after the loop
         Transform tunnelEndWall = Instantiate(tunnelEndWallPrefab,tunnelParent).transform;
-        tunnelEndWall.position = new Vector3(0, 0, segmentCount * tunnelSegmentLength - 0.5f * tunnelSegmentLength);
+        tunnelEndWall.position = new Vector3(0, 0, segmentCount * segmentLength - 0.5f * segmentLength);
         // add reference
         tunnelParentScript.endWall = tunnelEndWall.GetComponent<TunnelEndWall>();
 
@@ -95,10 +92,10 @@ public class TunnelGenerator : SingletonMonoBehaviour<TunnelGenerator>
         /// configure tunnel parent's new position/rotation so this tunnel sticks to the last tunnel's hole.
         if(currentHole != null)
         {
-            tunnelParent.position = currentHole.position - (currentHole.up * tunnelSegmentLength); //currentHole.up*2f centralizes hole with new tunnel
+            tunnelParent.position = currentHole.position - (currentHole.up * segmentLength); //currentHole.up*2f centralizes hole with new tunnel
             tunnelParent.rotation = currentHole.rotation;
             // fine tune the position so it connects with the hole seamlessly
-            tunnelParent.position += currentHole.rotation * new Vector3(0, -0.5f * tunnelSegmentLength, 0.5f * tunnelSegmentLength);
+            tunnelParent.position += currentHole.rotation * new Vector3(0, -0.5f * segmentLength, 0.5f * segmentLength);
         }
 
 
@@ -129,7 +126,7 @@ public class TunnelGenerator : SingletonMonoBehaviour<TunnelGenerator>
         Destroy(tunnelParentQueue.Dequeue().gameObject, 1f);
 
         // generate next one and enqueue
-        tunnelParentQueue.Enqueue(GenerateTunnel());
+        tunnelParentQueue.Enqueue(GenerateTunnel(baseTunnelSettings.TunnelSegmentLength, baseTunnelSettings.TunnelLengthMin, baseTunnelSettings.TunnelLengthMax));
 
         // return the top of queue
         return tunnelParentQueue.Peek();
