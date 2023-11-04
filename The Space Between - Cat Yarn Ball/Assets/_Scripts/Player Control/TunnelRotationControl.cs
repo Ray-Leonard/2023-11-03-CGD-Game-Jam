@@ -9,7 +9,8 @@ public class TunnelRotationControl : MonoBehaviour
 
     private float inTunnelRotationDelta = 0;
     private float switchTunnelRotationDelta = 0;
-    private Transform switchTunnelRotationPoint;
+    private Vector3 switchTunnelRotationPos;
+    private Vector3 switchTunnelRotationRight;
 
     private PlayerControl3d playerControl3d;
 
@@ -67,23 +68,21 @@ public class TunnelRotationControl : MonoBehaviour
     private void PlayerControl3d_OnSwitchTunnel(object sender, PlayerControl3d.SwitchTunnelEventArgs e)
     {
         switchTunnelRotationDelta -= rotationStep;
-        switchTunnelRotationPoint = e._hole;
+        switchTunnelRotationPos = e._holePos;
+        switchTunnelRotationRight = e._holeRight;
     }
 
     private void HandleSwitchTunnelRotation()
     {
-        if(switchTunnelRotationPoint != null)
-        {
             float frameRotationStep = rotationSpeed * Time.deltaTime;
             if (Mathf.Abs(switchTunnelRotationDelta) > frameRotationStep)
             {
                 frameRotationStep = switchTunnelRotationDelta > 0 ? frameRotationStep : -frameRotationStep;
                 // apply rotation
-                transform.RotateAround(switchTunnelRotationPoint.position, switchTunnelRotationPoint.right, frameRotationStep);
+                transform.RotateAround(switchTunnelRotationPos, switchTunnelRotationRight, frameRotationStep);
 
                 //  decrease targetRotationDelta by the amount we just rotated
                 switchTunnelRotationDelta -= frameRotationStep;
             }
-        }
     }
 }

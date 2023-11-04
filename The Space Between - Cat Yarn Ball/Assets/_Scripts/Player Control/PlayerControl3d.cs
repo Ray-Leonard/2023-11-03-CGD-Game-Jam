@@ -28,7 +28,8 @@ public class PlayerControl3d : SingletonMonoBehaviour<PlayerControl3d>
     public event EventHandler<SwitchTunnelEventArgs> OnSwitchTunnel;
     public class SwitchTunnelEventArgs : EventArgs
     {
-        public Transform _hole;
+        public Vector3 _holePos;
+        public Vector3 _holeRight;
     }
 
 
@@ -109,7 +110,7 @@ public class PlayerControl3d : SingletonMonoBehaviour<PlayerControl3d>
         if(other.transform.TryGetComponent(out TunnelHole tunnelHole))
         {
             // trigger transition
-            OnSwitchTunnel?.Invoke(this, new SwitchTunnelEventArgs { _hole = tunnelHole.transform.parent});
+            OnSwitchTunnel?.Invoke(this, new SwitchTunnelEventArgs { _holePos = currentTunnel.hole.position, _holeRight = currentTunnel.hole.right });
 
             // destroy the collider so it does not trigger multiple times
             Destroy(tunnelHole.gameObject);

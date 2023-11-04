@@ -18,7 +18,7 @@ public class TunnelSegment : MonoBehaviour
         TunnelHole tunnelHoleScript = Instantiate(holeColliderPrefab, hole).GetComponent<TunnelHole>();
         // assign current parent to hole script
         tunnelHoleScript.tunnelParent = transform.parent.GetComponent<TunnelParent>();
-        tunnelHoleScript.transform.localPosition += 0.5f * tunnelHoleScript.transform.forward;
+        tunnelHoleScript.transform.position += tunnelHoleScript.transform.forward;
 
         // then return the transform of that quad
         return hole;
