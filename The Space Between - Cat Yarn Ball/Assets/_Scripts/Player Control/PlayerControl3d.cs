@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,21 +9,28 @@ public class PlayerControl3d : SingletonMonoBehaviour<PlayerControl3d>
     [SerializeField] private float forwardSpeed;
     [SerializeField] private float horizontalStep;
     [SerializeField] private float horizontalSmoothFactor;
+    // for snapping to the lane
+    private float targetXPos = 0;
+    private float centerXPos;
+
 
     [Header("Jump")]
     [SerializeField] private float jumpForce;
     [SerializeField] private string groundLayerName;
     private bool isGrounded;
     public bool IsGrounded { get { return isGrounded; } }
-
-
-    private TunnelParent currentTunnel;
-    public TunnelParent CurrentTunnel { get => currentTunnel; }
-
-
     private Rigidbody rb;
-    // for snapping to the lane
-    private float targetXPos = 0;
+
+
+    // tunnel reference
+    private TunnelParent currentTunnel;
+    public TunnelParent CurrentTunnel { get => currentTunnel; set => currentTunnel = value; }
+    public event EventHandler<SwitchTunnelEventArgs> OnSwitchTunnel;
+    public class SwitchTunnelEventArgs : EventArgs
+    {
+        public Transform _hole;
+    }
+
 
     [Header("Zone Settings")]
     public bool canSwitchLanes = true;
@@ -44,7 +52,9 @@ public class PlayerControl3d : SingletonMonoBehaviour<PlayerControl3d>
         // move forward
         transform.position += new Vector3(0, 0, forwardSpeed * Time.deltaTime);
 
-        if (canSwitchLanes)
+
+        if (isGrounded && canSwitchLanes)
+
         {
             // switch lane
             if (Input.GetKeyDown(KeyCode.A))
@@ -61,15 +71,13 @@ public class PlayerControl3d : SingletonMonoBehaviour<PlayerControl3d>
 
         // check if targetXPos is out of range
         // 0.1f is to account for float point calculation loose of accuracy.
-        if (targetXPos < -horizontalStep - 0.1f)
+        if (targetXPos < centerXPos - horizontalStep - 0.1f)
         {
-            targetXPos = -horizontalStep;
-            // TODO: change world rotation
+            targetXPos = centerXPos - horizontalStep;
         }
-        else if (targetXPos > horizontalStep + 0.1f)
+        else if (targetXPos > centerXPos + horizontalStep + 0.1f)
         {
-            targetXPos = horizontalStep;
-            // TODO: change world rotation
+            targetXPos = centerXPos + horizontalStep;
         }
 
         // apply lane change movement
@@ -95,11 +103,23 @@ public class PlayerControl3d : SingletonMonoBehaviour<PlayerControl3d>
         }
     }
 
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.parent != null && other.transform.parent.TryGetComponent(out TunnelParent tunnelParent))
+        if(other.transform.TryGetComponent(out TunnelHole tunnelHole))
         {
-            currentTunnel = tunnelParent;
+            // trigger transition
+            OnSwitchTunnel?.Invoke(this, new SwitchTunnelEventArgs { _hole = tunnelHole.transform.parent});
+
+            // destroy the collider so it does not trigger multiple times
+            Destroy(tunnelHole.gameObject);
+
+            // advance current parent to next parent
+            currentTunnel = TunnelGenerator.Instance.GenerateNextTunnel();
+
+            // correction of centerXPos
+            centerXPos = currentTunnel.transform.position.x;
+            targetXPos = centerXPos;
         }
     }
 }

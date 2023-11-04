@@ -7,41 +7,83 @@ public class TunnelRotationControl : MonoBehaviour
     [SerializeField] float rotationStep;
     [SerializeField] float rotationSpeed;
 
-    private float targetRotationDelta = 0;
+    private float inTunnelRotationDelta = 0;
+    private float switchTunnelRotationDelta = 0;
+    private Transform switchTunnelRotationPoint;
 
     private PlayerControl3d playerControl3d;
 
     private void Start()
     {
         playerControl3d = PlayerControl3d.Instance;
+        playerControl3d.OnSwitchTunnel += PlayerControl3d_OnSwitchTunnel;
     }
+
 
     // Update is called once per frame
     void Update()
     {
-        Transform endWallCenterTile = playerControl3d.CurrentTunnel.endWall.CenterTile;
+        HandleInput();
+        HandleInTunnelRotation();
+        HandleSwitchTunnelRotation();
+    }
+
+
+    private void HandleInput()
+    {
 
         if (!playerControl3d.IsGrounded)
         {
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            if (Input.GetKeyDown(KeyCode.A))
             {
-                targetRotationDelta += rotationStep;
+                inTunnelRotationDelta += rotationStep;
             }
-            else if (Input.GetKeyDown(KeyCode.RightArrow))
+            else if (Input.GetKeyDown(KeyCode.D))
             {
-                targetRotationDelta -= rotationStep;
+                inTunnelRotationDelta -= rotationStep;
             }
         }
+    }
 
-        float frameRotationStep = rotationSpeed * Time.deltaTime;
-        if(Mathf.Abs(targetRotationDelta) > frameRotationStep)
+    private void HandleInTunnelRotation()
+    {
+        if(playerControl3d.CurrentTunnel != null)
         {
-            frameRotationStep = targetRotationDelta > 0 ? frameRotationStep : -frameRotationStep;
-            // apply rotation
-            transform.RotateAround(endWallCenterTile.position, endWallCenterTile.forward, frameRotationStep);
+            Transform endWallCenterTile = playerControl3d.CurrentTunnel.endWall.CenterTile;
+            float frameRotationStep = rotationSpeed * Time.deltaTime;
+            if (Mathf.Abs(inTunnelRotationDelta) > frameRotationStep)
+            {
+                frameRotationStep = inTunnelRotationDelta > 0 ? frameRotationStep : -frameRotationStep;
+                // apply rotation
+                transform.RotateAround(endWallCenterTile.position, endWallCenterTile.forward, frameRotationStep);
 
-            //  decrease targetRotationDelta by the amount we just rotated
-            targetRotationDelta -= frameRotationStep;
+                //  decrease targetRotationDelta by the amount we just rotated
+                inTunnelRotationDelta -= frameRotationStep;
+            }
+        }
+    }
+
+
+    private void PlayerControl3d_OnSwitchTunnel(object sender, PlayerControl3d.SwitchTunnelEventArgs e)
+    {
+        switchTunnelRotationDelta -= rotationStep;
+        switchTunnelRotationPoint = e._hole;
+    }
+
+    private void HandleSwitchTunnelRotation()
+    {
+        if(switchTunnelRotationPoint != null)
+        {
+            float frameRotationStep = rotationSpeed * Time.deltaTime;
+            if (Mathf.Abs(switchTunnelRotationDelta) > frameRotationStep)
+            {
+                frameRotationStep = switchTunnelRotationDelta > 0 ? frameRotationStep : -frameRotationStep;
+                // apply rotation
+                transform.RotateAround(switchTunnelRotationPoint.position, switchTunnelRotationPoint.right, frameRotationStep);
+
+                //  decrease targetRotationDelta by the amount we just rotated
+                switchTunnelRotationDelta -= frameRotationStep;
+            }
         }
     }
 }

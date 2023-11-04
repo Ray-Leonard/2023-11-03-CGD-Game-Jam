@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class TunnelGenerator : MonoBehaviour
+public class TunnelGenerator : SingletonMonoBehaviour<TunnelGenerator>
 {
     [Header("Tunnel Prefabs")]
     [SerializeField] private GameObject tunnelSegmentPrefab;
@@ -19,8 +19,21 @@ public class TunnelGenerator : MonoBehaviour
     public GameObject[] interactables;
 
 
-    [ContextMenu("Generate tunnel")]
-    private void GenerateTunnel()
+    private Queue<TunnelParent> tunnelParentQueue = new Queue<TunnelParent>();
+
+    private void Start()
+    {
+        // generate first tunnel.
+        tunnelParentQueue.Enqueue(GenerateTunnel());
+        // assign first reference to player
+        PlayerControl3d.Instance.CurrentTunnel = tunnelParentQueue.Peek();
+        // generate second tunnel
+        tunnelParentQueue.Enqueue(GenerateTunnel());
+    }
+
+
+    [ContextMenu("Generate Tunnel")]
+    private TunnelParent GenerateTunnel()
     {
         /// generate a tunnel parent to hold the tunnel, at world origin
         Transform tunnelParent = new GameObject().transform;
@@ -95,6 +108,23 @@ public class TunnelGenerator : MonoBehaviour
         int holeSegmentIndex = Random.Range(Mathf.RoundToInt(0.7f * segmentCount), segmentCount);
         TunnelSegment tunnelSegment = segmentTransformList[holeSegmentIndex].GetComponent<TunnelSegment>();
         currentHole = tunnelSegment.MakeHole();
+        // record the hole
+        tunnelParentScript.hole = currentHole;
+
+        return tunnelParentScript;
+    }
+
+
+    public TunnelParent GenerateNextTunnel()
+    {
+        // destroy the previous one
+        Destroy(tunnelParentQueue.Dequeue().gameObject, 1f);
+
+        // generate next one and enqueue
+        tunnelParentQueue.Enqueue(GenerateTunnel());
+
+        // return the top of queue
+        return tunnelParentQueue.Peek();
     }
 
 }
