@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 //keeps track of player stats and also display UI
 public class StatManager : MonoBehaviour
@@ -8,6 +9,9 @@ public class StatManager : MonoBehaviour
 
     public GameObject yarnContainer; //displays yarn ball collection
     public GameObject healthContainer;
+
+    public GameObject deathScreen;
+    public bool isDead = false;
 
     [SerializeField]
     private int score = 0; //n of yarn balls
@@ -25,6 +29,7 @@ public class StatManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        if (deathScreen != null) deathScreen.SetActive(false);
     }
 
     private void Start()
@@ -32,6 +37,16 @@ public class StatManager : MonoBehaviour
         score = 0;
         UpdateScore();
         UpdateHealth();
+    }
+
+    private void Update()
+    {
+        if(isDead){
+
+            if(Input.GetKeyDown(KeyCode.R)){
+                SceneManager.LoadScene("Interactables"); //change this
+            }
+        }
     }
 
     public void AddPoints(int x)
@@ -87,6 +102,11 @@ public class StatManager : MonoBehaviour
         {
             Debug.Log("you died");
         }
+    }
+
+    public void death(){
+        isDead = true;
+        if (deathScreen != null) deathScreen.SetActive(true);
     }
 
 

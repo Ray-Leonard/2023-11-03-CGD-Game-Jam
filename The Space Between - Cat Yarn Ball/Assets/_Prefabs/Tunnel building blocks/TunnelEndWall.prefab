@@ -794,6 +794,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5108669175489265619}
   - component: {fileID: 8517294847828237867}
+  - component: {fileID: 131034438024228911}
   m_Layer: 0
   m_Name: TunnelEndWall
   m_TagString: Untagged
@@ -838,6 +839,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   centerTile: {fileID: 2064776242961339277}
+--- !u!65 &131034438024228911
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8888723832830869985}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6.3344727, y: 5.9882603, z: 0.7505436}
+  m_Center: {x: 0.0044852495, y: 3.026576, z: 0.1247282}
 --- !u!1 &8919195612404186743
 GameObject:
   m_ObjectHideFlags: 0
