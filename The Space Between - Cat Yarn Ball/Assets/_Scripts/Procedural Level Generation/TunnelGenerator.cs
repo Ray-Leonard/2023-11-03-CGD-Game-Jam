@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class TunnelGenerator : MonoBehaviour
@@ -14,7 +15,6 @@ public class TunnelGenerator : MonoBehaviour
     [SerializeField] private int tunnelLengthMax;
 
     [SerializeField] private Transform currentHole;
-    [SerializeField] private Transform currentTunnelParent;
 
     [ContextMenu("Generate tunnel")]
     private void GenerateTunnel()
@@ -26,7 +26,9 @@ public class TunnelGenerator : MonoBehaviour
         tunnelParent.rotation = Quaternion.identity;
         tunnelParent.name = "tunnel";
         tunnelParent.parent = transform;
-        currentTunnelParent = tunnelParent;
+        TunnelParent tunnelParentScript = tunnelParent.AddComponent<TunnelParent>();
+
+
 
         /// tunnel generation
         // generate random length of the tunnel
@@ -40,11 +42,19 @@ public class TunnelGenerator : MonoBehaviour
             segmentTransform.position = new Vector3(0, 0, tunnelSegmentLength * i);
             
             segmentTransformList.Add(segmentTransform);
+
+            // add reference
+            tunnelParentScript.segments.Add(segmentTransform.GetComponent<TunnelSegment>());
         }
+
+
 
         // generate end wall after the loop
         Transform tunnelEndWall = Instantiate(tunnelEndWallPrefab,tunnelParent).transform;
         tunnelEndWall.position = new Vector3(0, 0, segmentCount * tunnelSegmentLength - 0.5f * tunnelSegmentLength);
+        // add reference
+        tunnelParentScript.endWall = tunnelEndWall.GetComponent<TunnelEndWall>();
+
 
 
         /// configure tunnel parent's new position/rotation so this tunnel sticks to the last tunnel's hole.
@@ -55,6 +65,7 @@ public class TunnelGenerator : MonoBehaviour
             // fine tune the position so it connects with the hole seamlessly
             tunnelParent.position += currentHole.rotation * new Vector3(0, -0.5f * tunnelSegmentLength, 0.5f * tunnelSegmentLength);
         }
+
 
 
         /// Make a hole on the tunnel

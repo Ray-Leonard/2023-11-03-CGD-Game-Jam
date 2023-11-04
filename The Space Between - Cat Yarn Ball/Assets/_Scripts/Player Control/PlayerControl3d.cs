@@ -15,12 +15,16 @@ public class PlayerControl3d : SingletonMonoBehaviour<PlayerControl3d>
     private bool isGrounded;
     public bool IsGrounded { get { return isGrounded; } }
 
+
+    private TunnelParent currentTunnel;
+
     private Rigidbody rb;
     // for snapping to the lane
     private float targetXPos = 0;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         rb = GetComponent<Rigidbody>();
     }
 

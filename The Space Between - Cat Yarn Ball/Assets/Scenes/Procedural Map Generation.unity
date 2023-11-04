@@ -24626,6 +24626,7 @@ GameObject:
   m_Component:
   - component: {fileID: 993930879}
   - component: {fileID: 993930878}
+  - component: {fileID: 993930880}
   m_Layer: 0
   m_Name: TunnleGenerator
   m_TagString: Untagged
@@ -24670,6 +24671,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &993930880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 993930877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e14081aae8a85384986479e274fd9c76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationStep: 90
+  rotationSmoothFactor: 0
 --- !u!1 &998273386
 GameObject:
   m_ObjectHideFlags: 0
