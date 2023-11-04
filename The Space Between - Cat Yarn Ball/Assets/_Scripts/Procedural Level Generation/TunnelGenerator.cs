@@ -17,7 +17,7 @@ public class TunnelGenerator : SingletonMonoBehaviour<TunnelGenerator>
     [SerializeField] private Transform currentHole;
 
     public GameObject[] interactables;
-
+    public GameObject holeSign;
 
     private Queue<TunnelParent> tunnelParentQueue = new Queue<TunnelParent>();
 
@@ -73,7 +73,6 @@ public class TunnelGenerator : SingletonMonoBehaviour<TunnelGenerator>
                     int randomPlaneIndex = Random.Range(0, 11);
                     Transform plane = segmentTransform.GetChild(randomPlaneIndex);
                     Vector3 localYAxis = plane.forward;
-                    Debug.Log(localYAxis);
                     Vector3 newPosition = plane.position - localYAxis * 2f;
                     GameObject newItem = Instantiate(interactables[randomIndex], newPosition, Quaternion.identity, plane);
                 }
@@ -110,6 +109,14 @@ public class TunnelGenerator : SingletonMonoBehaviour<TunnelGenerator>
         currentHole = tunnelSegment.MakeHole();
         // record the hole
         tunnelParentScript.hole = currentHole;
+
+        
+        if(holeSign!=null){
+            //add a sign to the hole
+            Vector3 localZ = currentHole.forward;
+            Vector3 newPosition = currentHole.position - localZ * 2f;
+            Instantiate(holeSign, newPosition, Quaternion.identity, currentHole);
+        }
 
         return tunnelParentScript;
     }
