@@ -44,18 +44,18 @@ public class PlayerControl3d : SingletonMonoBehaviour<PlayerControl3d>
 
     private void Update()
     {
-        HandleMovement();
+        HandleMovementInput();
         HandleJump();
     }
 
-    private void HandleMovement()
+    private void FixedUpdate()
     {
-        // move forward
-        transform.position += new Vector3(0, 0, forwardSpeed * Time.deltaTime);
+        HandleMovement();
+    }
 
-
+    private void HandleMovementInput()
+    {
         if (isGrounded && canSwitchLanes)
-
         {
             // switch lane
             if (Input.GetKeyDown(KeyCode.A))
@@ -68,8 +68,6 @@ public class PlayerControl3d : SingletonMonoBehaviour<PlayerControl3d>
             }
         }
 
-
-
         // check if targetXPos is out of range
         // 0.1f is to account for float point calculation loose of accuracy.
         if (targetXPos < centerXPos - horizontalStep - 0.1f)
@@ -81,10 +79,9 @@ public class PlayerControl3d : SingletonMonoBehaviour<PlayerControl3d>
             targetXPos = centerXPos + horizontalStep;
         }
 
-        // apply lane change movement
-        float currXPos = Mathf.Lerp(transform.position.x, targetXPos, horizontalSmoothFactor * Time.deltaTime);
-        transform.position = new Vector3(currXPos, transform.position.y, transform.position.z);
+
     }
+
 
     private void HandleJump()
     {
@@ -94,6 +91,16 @@ public class PlayerControl3d : SingletonMonoBehaviour<PlayerControl3d>
             isGrounded = false;
         }
     }
+
+
+    private void HandleMovement()
+    {
+        // apply lane change movement
+        float currXPos = Mathf.Lerp(transform.position.x, targetXPos, horizontalSmoothFactor * Time.fixedDeltaTime);
+
+        rb.MovePosition(new Vector3(currXPos, transform.position.y, transform.position.z + forwardSpeed * Time.fixedDeltaTime));
+    }
+
 
 
     private void OnCollisionEnter(Collision collision)
