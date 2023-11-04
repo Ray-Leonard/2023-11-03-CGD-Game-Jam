@@ -115,7 +115,7 @@ public class TunnelGenerator : SingletonMonoBehaviour<TunnelGenerator>
             //add a sign to the hole
             Vector3 localZ = currentHole.forward;
             Vector3 newPosition = currentHole.position - localZ * 2f;
-            Instantiate(holeSign, newPosition, Quaternion.identity, currentHole);
+            Instantiate(holeSign, newPosition, currentHole.rotation, currentHole);
         }
 
         return tunnelParentScript;
