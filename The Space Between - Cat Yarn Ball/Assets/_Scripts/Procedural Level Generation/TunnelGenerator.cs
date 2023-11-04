@@ -95,7 +95,7 @@ public class TunnelGenerator : SingletonMonoBehaviour<TunnelGenerator>
         /// configure tunnel parent's new position/rotation so this tunnel sticks to the last tunnel's hole.
         if(currentHole != null)
         {
-            tunnelParent.position = currentHole.position;
+            tunnelParent.position = currentHole.position - (currentHole.up*2f); //currentHole.up*2f centralizes hole with new tunnel
             tunnelParent.rotation = currentHole.rotation;
             // fine tune the position so it connects with the hole seamlessly
             tunnelParent.position += currentHole.rotation * new Vector3(0, -0.5f * tunnelSegmentLength, 0.5f * tunnelSegmentLength);
