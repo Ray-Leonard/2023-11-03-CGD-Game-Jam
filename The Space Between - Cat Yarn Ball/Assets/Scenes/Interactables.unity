@@ -611,7 +611,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 433043018}
-  m_LocalRotation: {x: 0.09853762, y: 0.000000004280661, z: -4.238689e-10, w: 0.99513334}
+  m_LocalRotation: {x: 0.098537624, y: -0.0000000042806607, z: 4.238689e-10, w: 0.99513334}
   m_LocalPosition: {x: 0, y: 3.12, z: -3.822}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -997,6 +997,8 @@ MonoBehaviour:
   interactables:
   - {fileID: 2149981864315834989, guid: 7b6a5d8ad5f48fa4cb97e0a399d9df5f, type: 3}
   - {fileID: 7485902020002554135, guid: 7df221ad2c557ee4a91cf80d5ccd2fca, type: 3}
+  holeSign: {fileID: 4088631793296918952, guid: 9b9f63b380a95d74c909432125540a55,
+    type: 3}
 --- !u!4 &607007315
 Transform:
   m_ObjectHideFlags: 0
@@ -2069,7 +2071,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1501644456}
-  m_LocalRotation: {x: 0.09853762, y: 0.000000004280661, z: -4.238689e-10, w: 0.99513334}
+  m_LocalRotation: {x: 0.098537624, y: -0.0000000042806607, z: 4.238689e-10, w: 0.99513334}
   m_LocalPosition: {x: 0, y: 3.12, z: -3.822}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
