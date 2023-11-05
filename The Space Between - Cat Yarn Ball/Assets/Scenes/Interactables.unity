@@ -1007,12 +1007,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 206b09b0b789c0c4088b56b5e2731d9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tunnelSegmentPrefab: {fileID: 3374761004631601044, guid: 39c64e86531f52748bc1809ae71ca217,
-    type: 3}
-  tunnelEndWallPrefab: {fileID: 8888723832830869985, guid: b479d0f89c75db147bbba5eb28083daf,
-    type: 3}
   baseTunnelSettings: {fileID: 11400000, guid: e9aa7279d39a4fa47879c339d46f1980, type: 2}
-  multiTunnelSettings: []
+  multiTunnelSettings:
+  - {fileID: 11400000, guid: e9aa7279d39a4fa47879c339d46f1980, type: 2}
+  - {fileID: 11400000, guid: e9aa7279d39a4fa47879c339d46f1980, type: 2}
+  - {fileID: 11400000, guid: 0b85c658ef752ef4d9047805f2efbd04, type: 2}
   currentHole: {fileID: 0}
 --- !u!4 &607007315
 Transform:
@@ -2676,7 +2675,7 @@ MonoBehaviour:
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
-    ModeOverride: 0
+    ModeOverride: 2
     LensShift: {x: 0, y: 0}
     GateFit: 2
     m_SensorSize: {x: 1, y: 1}
