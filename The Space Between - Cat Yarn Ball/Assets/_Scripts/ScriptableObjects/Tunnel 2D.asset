@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   is2D: 1
   makeBigHole: 1
+  endGameTunnel: 0
   playerControlSettings:
     canSwitchLanes: 0
     canJump: 1

@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 582e95667e4564f4c9e3b6801337625e, type: 3}
   m_Name: Base Tunnel
   m_EditorClassIdentifier: 
+  is2D: 0
   makeBigHole: 0
+  endGameTunnel: 0
   playerControlSettings:
     canSwitchLanes: 1
     canJump: 1

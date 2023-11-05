@@ -12,8 +12,8 @@ public class SOTunnelSettings : ScriptableObject
     [SerializeField] private bool makeBigHole = false;
     public bool MakeBigHole { get { return makeBigHole; } }
 
-    [SerializeField] private bool makeHole = true;
-    public bool MakeHole { get { return makeHole; } }
+    [SerializeField] private bool endGameTunnel = false;
+    public bool EngGameTunnel { get { return endGameTunnel; } }
 
     [Space]
     public PlayerControlSettings playerControlSettings;

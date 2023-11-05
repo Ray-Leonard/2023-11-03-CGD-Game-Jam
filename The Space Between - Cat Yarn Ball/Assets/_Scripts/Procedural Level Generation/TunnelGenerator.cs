@@ -127,7 +127,7 @@ public class TunnelGenerator : SingletonMonoBehaviour<TunnelGenerator>
             PlayerControl3d player = PlayerControl3d.Instance;
             player.playerControlSettings = tunnelSettings.playerControlSettings;
 
-            if (GameStateManager.Instance.gameState == GameState.EndingGame)
+            if (tunnelSettings.EngGameTunnel)
             {
                 GameStateManager.Instance.StartEndGame();
             }
@@ -160,7 +160,7 @@ public class TunnelGenerator : SingletonMonoBehaviour<TunnelGenerator>
 
         int holeSegmentIndex = 0;
 
-        if(tunnelSettings.MakeHole)
+        if(!tunnelSettings.EngGameTunnel)
         {
             if (tunnelSettings.MakeBigHole) //Make big Hole
             {
