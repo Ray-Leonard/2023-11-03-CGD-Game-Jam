@@ -55,9 +55,9 @@ GameObject:
   - component: {fileID: 9119280589519895968}
   - component: {fileID: 9119280589519895971}
   - component: {fileID: 9119280589519895970}
-  - component: {fileID: 9119280589519895973}
   - component: {fileID: 9119280589519895972}
   - component: {fileID: 9119280589519895975}
+  - component: {fileID: 7254492170284047068}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -132,19 +132,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &9119280589519895973
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9119280589519895974}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &9119280589519895972
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -184,7 +171,20 @@ MonoBehaviour:
     canJump: 1
     canRotateWorld: 1
     canMoveFoward: 1
-  canSwitchLanes: 1
+--- !u!136 &7254492170284047068
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9119280589519895974}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &9119280589503995746
 PrefabInstance:
   m_ObjectHideFlags: 0

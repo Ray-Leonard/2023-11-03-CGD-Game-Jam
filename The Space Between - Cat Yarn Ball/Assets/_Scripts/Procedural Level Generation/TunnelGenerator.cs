@@ -216,7 +216,7 @@ public class TunnelGenerator : SingletonMonoBehaviour<TunnelGenerator>
 
         //tunnelIndex = (tunnelIndex + 1) % multiTunnelSettings.Length;
 
-        var tunnel = multiTunnelSettings[Random.Range(0, multiTunnelSettings.Length - 1)];
+        var tunnel = multiTunnelSettings[Random.Range(0, multiTunnelSettings.Length)];
 
         return tunnel;
     }
