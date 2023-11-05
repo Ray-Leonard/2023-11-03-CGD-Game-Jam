@@ -177,9 +177,9 @@ MonoBehaviour:
   audioSources:
   - {fileID: 2655590787767574813}
   - {fileID: 2655590786830030933}
-  sourceFocus: 0
+  currentFocus: 0
   transitionDuration: 2
-  normalVolume: 0.5
+  normalVolume: 0.3
 --- !u!1 &2655590787767574812
 GameObject:
   m_ObjectHideFlags: 0
