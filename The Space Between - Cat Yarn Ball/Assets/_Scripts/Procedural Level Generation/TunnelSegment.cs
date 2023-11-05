@@ -22,7 +22,7 @@ public class TunnelSegment : MonoBehaviour
     public Transform MakeHole()
     {
         // choose a random child and disable that
-        int holeIndex = Random.Range(0, transform.childCount);
+        int holeIndex = Random.Range(0, childCount);
         Transform hole = transform.GetChild(holeIndex);
 
         var mesh = hole.GetComponent<MeshRenderer>();
@@ -142,7 +142,6 @@ public class TunnelSegment : MonoBehaviour
             // update count and bool array
             isTileOccupied[tileIndex] = true;
             trapGenerated++;
-            Debug.Log("Generate Trap");
         }
     }
 
@@ -153,6 +152,17 @@ public class TunnelSegment : MonoBehaviour
         objTransform.localScale *= 0.5f;
         objTransform.localRotation = Quaternion.Euler(-90f, 0, 0);
         objTransform.position += objTransform.up * 0.5f;
+    }
+
+
+    public void ApplyMaterial(Material mat)
+    {
+        for(int i = 0; i < childCount; i++)
+        {
+            MeshRenderer ren = transform.GetChild(i).GetComponent<MeshRenderer>();
+
+            ren.sharedMaterials = new Material[] { mat };
+        }
     }
 
 }

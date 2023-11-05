@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2149981864315834984}
   - component: {fileID: 6115802596387392497}
   - component: {fileID: 4545525039449844507}
+  - component: {fileID: 6024925336595177812}
   m_Layer: 0
   m_Name: MovingTrap
   m_TagString: Untagged
@@ -101,3 +102,16 @@ MonoBehaviour:
   sound: {fileID: 8300000, guid: 97ec73e00f4a62440a3bda8c01765e91, type: 3}
   hasMoveY: 1
   rotate: 1
+--- !u!65 &6024925336595177812
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2149981864315834989}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.87, y: 1.87, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}

@@ -16,6 +16,15 @@ public class TunnelGenerator : SingletonMonoBehaviour<TunnelGenerator>
 
     private int tunnelIndex = 0;
 
+    [Header("Lights")]
+    [SerializeField] private GameObject lightPrefab;
+    [SerializeField] private int lightFrequencyMin;    // generate a light every lightFrequency segment.
+    [SerializeField] private int lightFrequencyMax;    // generate a light every lightFrequency segment.
+
+    [Header("Materials")]
+    [SerializeField] private Material[] tunnelMaterialBank;
+
+
     private void Start()
     {
         // generate first tunnel.
@@ -46,10 +55,12 @@ public class TunnelGenerator : SingletonMonoBehaviour<TunnelGenerator>
         TunnelParent tunnelParentScript = tunnelParent.AddComponent<TunnelParent>();
 
 
-
+        
         /// tunnel generation
         // generate random length of the tunnel
         int segmentCount = Random.Range(lengthMin, lengthMax);
+        int lightFrequency = Random.Range(lightFrequencyMin, lightFrequencyMax + 1);
+        int materialIndex = Random.Range(0, tunnelMaterialBank.Length);
         // generate tunnel segments to make a tunnel
         for (int i = 0; i < segmentCount; ++i)
         {
@@ -57,10 +68,21 @@ public class TunnelGenerator : SingletonMonoBehaviour<TunnelGenerator>
             segmentTransform.position = new Vector3(0, 0, segmentLength * i);
 
             // add reference
-            tunnelParentScript.segments.Add(segmentTransform.GetComponent<TunnelSegment>());
+            TunnelSegment segmentScript = segmentTransform.GetComponent<TunnelSegment>();
+            tunnelParentScript.segments.Add(segmentScript);
+
+
+            /// visuals
+            // generate the light, but not on the first or last segment
+            if(i % lightFrequency == 0 && i != 0 && i != segmentCount-1)
+            {
+                Transform lightTransform = Instantiate(lightPrefab, tunnelParent).transform;
+                lightTransform.position = segmentTransform.position + 1.5f * segmentLength * segmentTransform.up;
+            }
+            // apply material to tunnel
+            segmentScript.ApplyMaterial(tunnelMaterialBank[materialIndex]);
         }
 
-	
 
         // Generate Camera
         if(tunnelSettings.cinemachineVirtualCamera != null)
@@ -169,15 +191,6 @@ public class TunnelGenerator : SingletonMonoBehaviour<TunnelGenerator>
             }
         }
 
-        /* Hole sign
-        if (holeSign!=null){
-            //add a sign to the hole
-            Vector3 localZ = currentHole.forward;
-            Vector3 newPosition = currentHole.position - localZ * 2f;
-            Instantiate(holeSign, newPosition, currentHole.rotation, currentHole);
-        }
-        /*/
-
 
         return tunnelParentScript;
     }
@@ -197,11 +210,11 @@ public class TunnelGenerator : SingletonMonoBehaviour<TunnelGenerator>
 
     private SOTunnelSettings GetNextTunnelSettings()
     {
-        //return baseTunnelSettings;
+        //var tunnel = multiTunnelSettings[tunnelIndex];
 
-        var tunnel = multiTunnelSettings[tunnelIndex];
+        //tunnelIndex = (tunnelIndex + 1) % multiTunnelSettings.Length;
 
-        tunnelIndex = (tunnelIndex + 1) % multiTunnelSettings.Length;
+        var tunnel = multiTunnelSettings[Random.Range(0, multiTunnelSettings.Length - 1)];
 
         return tunnel;
     }
