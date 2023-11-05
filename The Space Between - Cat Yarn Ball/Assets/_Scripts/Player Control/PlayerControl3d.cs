@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -19,10 +20,10 @@ public class PlayerControl3d : SingletonMonoBehaviour<PlayerControl3d>
     [Header("Jump")]
     [SerializeField] private float jumpForce;
     [SerializeField] private string groundLayerName;
+    [SerializeField] private LayerMask groundLayerMask;
     private bool isGrounded;
     public bool IsGrounded { get { return isGrounded; } }
     private Rigidbody rb;
-
 
     // tunnel reference
     private TunnelParent currentTunnel;
@@ -73,6 +74,8 @@ public class PlayerControl3d : SingletonMonoBehaviour<PlayerControl3d>
             forwardSpeed = minForwardSpeed + (maxForwardSpeed - minForwardSpeed) * StatManager.Instance.GetLevelDifficulty();
             HandleMovement();
         }
+
+        HandleYPos();
     }
 
     private void HandleMovementInput()
@@ -121,6 +124,21 @@ public class PlayerControl3d : SingletonMonoBehaviour<PlayerControl3d>
         rb.MovePosition(new Vector3(currXPos, rb.position.y, rb.position.z + forwardSpeed * Time.fixedDeltaTime));
     }
 
+    private void HandleYPos()
+    {
+
+        //RaycastHit hitInfo;
+        //// if not touching the ground
+        //if (isGrounded && !Physics.Raycast(transform.position, Vector3.down, out hitInfo, Mathf.Infinity, groundLayerMask))
+        //{
+        //    //rb.MovePosition(new Vector3(rb.position.x, rb.position.y + forwardSpeed * Time.fixedDeltaTime, rb.position.z));
+
+        //    transform.position += Vector3.up * Time.fixedDeltaTime;
+        //}
+
+
+        //Debug.DrawLine(transform.position, transform.position + Vector3.down * 10, Color.red);
+    }
 
 
     private void OnCollisionEnter(Collision collision)

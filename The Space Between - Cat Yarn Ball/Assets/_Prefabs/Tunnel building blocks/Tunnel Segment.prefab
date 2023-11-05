@@ -794,7 +794,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3374761004631601045}
   - component: {fileID: -7112201241455414157}
-  - component: {fileID: 919329034710763376}
   m_Layer: 3
   m_Name: Tunnel Segment
   m_TagString: Untagged
@@ -854,19 +853,6 @@ MonoBehaviour:
   - {fileID: 2149981864315834989, guid: 4d3a58a2d88cf9e4388981f156d1dbac, type: 3}
   difficultyMultiplier: 1
   generateTraps: 1
---- !u!65 &919329034710763376
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3374761004631601044}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 6, y: 6, z: 2}
-  m_Center: {x: 0, y: 3, z: 0}
 --- !u!1 &3374761004638112927
 GameObject:
   m_ObjectHideFlags: 0
