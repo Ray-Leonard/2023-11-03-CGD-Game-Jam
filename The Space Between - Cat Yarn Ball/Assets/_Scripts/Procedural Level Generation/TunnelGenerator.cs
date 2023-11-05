@@ -89,8 +89,6 @@ public class TunnelGenerator : SingletonMonoBehaviour<TunnelGenerator>
 
                 tunnelParentScript.cam = virtualCamera.transform;
 
-                Debug.LogError("Activate Camera", virtualCamera.transform);
-
                 virtualCamera.LookAt = player;
                 virtualCamera.Follow = player;
             });
