@@ -5,13 +5,6 @@ using UnityEngine;
 public class TunnelParent : MonoBehaviour
 {
     public List<TunnelSegment> segments = new();
-    public TunnelEndWall endWall;
-    public Transform hole;
-
-
-    private void Start()
-    {
-        //pick random 
-    }
-
+    public TunnelEndWall endWall { get; set; }
+    public Transform hole { get; set; }
 }

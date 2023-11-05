@@ -6,7 +6,9 @@ using UnityEngine;
 public class PlayerControl3d : SingletonMonoBehaviour<PlayerControl3d>
 {
     [Header("Movement")]
-    [SerializeField] private float forwardSpeed;
+    private float forwardSpeed;
+    [SerializeField] private float minForwardSpeed;
+    [SerializeField] private float maxForwardSpeed;
     [SerializeField] private float horizontalStep;
     [SerializeField] private float horizontalSmoothFactor;
     // for snapping to the lane
@@ -36,21 +38,41 @@ public class PlayerControl3d : SingletonMonoBehaviour<PlayerControl3d>
     [Header("Zone Settings")]
     public bool canSwitchLanes = true;
 
+    private bool isLock;
+
     protected override void Awake()
     {
         base.Awake();
         rb = GetComponent<Rigidbody>();
     }
 
+    private void Start()
+    {
+        StatManager.Instance.OnPlayerDead += LockInput;
+    }
+
+    private void OnDestroy()
+    {
+        StatManager.Instance.OnPlayerDead -= LockInput;
+    }
+
     private void Update()
     {
-        HandleMovementInput();
-        HandleJump();
+        if(!isLock)
+        {
+            HandleMovementInput();
+            HandleJump();
+        }
     }
 
     private void FixedUpdate()
     {
-        HandleMovement();
+        if (!isLock)
+        {
+            // update player speed
+            forwardSpeed = minForwardSpeed + (maxForwardSpeed - minForwardSpeed) * StatManager.Instance.GetLevelDifficulty();
+            HandleMovement();
+        }
     }
 
     private void HandleMovementInput()
@@ -78,8 +100,6 @@ public class PlayerControl3d : SingletonMonoBehaviour<PlayerControl3d>
         {
             targetXPos = centerXPos + horizontalStep;
         }
-
-
     }
 
 
@@ -96,9 +116,9 @@ public class PlayerControl3d : SingletonMonoBehaviour<PlayerControl3d>
     private void HandleMovement()
     {
         // apply lane change movement
-        float currXPos = Mathf.Lerp(transform.position.x, targetXPos, horizontalSmoothFactor * Time.fixedDeltaTime);
+        float currXPos = Mathf.Lerp(rb.position.x, targetXPos, horizontalSmoothFactor * Time.fixedDeltaTime);
 
-        rb.MovePosition(new Vector3(currXPos, transform.position.y, transform.position.z + forwardSpeed * Time.fixedDeltaTime));
+        rb.MovePosition(new Vector3(currXPos, rb.position.y, rb.position.z + forwardSpeed * Time.fixedDeltaTime));
     }
 
 
@@ -129,6 +149,11 @@ public class PlayerControl3d : SingletonMonoBehaviour<PlayerControl3d>
             centerXPos = currentTunnel.transform.position.x;
             targetXPos = centerXPos;
         }
+    }
+
+    private void LockInput()
+    {
+        isLock = true;
     }
 }
 
