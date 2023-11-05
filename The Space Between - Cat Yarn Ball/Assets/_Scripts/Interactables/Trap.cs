@@ -11,7 +11,7 @@ public class Trap : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            StatManager.instance.DeductHealth(damage);
+            StatManager.Instance.DeductHealth(damage);
 
             if (sound != null)
             {

@@ -11,7 +11,7 @@ public class Collectable : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            StatManager.instance.AddPoints(pointValue);
+            StatManager.Instance.AddPoints(pointValue);
 
             if (collectSound != null)
             {

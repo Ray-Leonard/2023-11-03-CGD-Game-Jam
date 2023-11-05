@@ -11,7 +11,7 @@ public class TunnelEndWall : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            StatManager.instance.death();
+            StatManager.Instance.DeductHealth(9);
         }
     }
 

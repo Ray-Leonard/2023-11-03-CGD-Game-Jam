@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class TunnelHole : MonoBehaviour
 {
-    public TunnelParent tunnelParent;
+    public TunnelParent tunnelParent { get; set; }
 }

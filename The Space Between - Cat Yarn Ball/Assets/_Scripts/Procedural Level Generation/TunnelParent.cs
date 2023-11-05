@@ -7,8 +7,8 @@ using UnityEngine.Events;
 public class TunnelParent : MonoBehaviour
 {
     public List<TunnelSegment> segments = new();
-    public TunnelEndWall endWall;
-    public Transform hole;
+    public TunnelEndWall endWall { get; set; }
+    public Transform hole { get; set; }
 
     public Transform cam;
 

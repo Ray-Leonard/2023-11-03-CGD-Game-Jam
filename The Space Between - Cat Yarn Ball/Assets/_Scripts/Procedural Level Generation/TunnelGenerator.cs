@@ -12,9 +12,6 @@ public class TunnelGenerator : SingletonMonoBehaviour<TunnelGenerator>
     [SerializeField] private SOTunnelSettings[] multiTunnelSettings;
     [SerializeField] private Transform currentHole;
 
-    public GameObject[] interactables;
-    public GameObject holeSign;
-
     private Queue<TunnelParent> tunnelParentQueue = new Queue<TunnelParent>();
 
     private int tunnelIndex = 0;
@@ -39,8 +36,8 @@ public class TunnelGenerator : SingletonMonoBehaviour<TunnelGenerator>
         int lengthMax = tunnelSettings.TunnelLengthMax;
 
 
-    /// generate a tunnel parent to hold the tunnel, at world origin
-    Transform tunnelParent = new GameObject().transform;
+        /// generate a tunnel parent to hold the tunnel, at world origin
+        Transform tunnelParent = new GameObject().transform;
         // configure the tunnel parent's original position/rotation
         tunnelParent.position = Vector3.zero;
         tunnelParent.rotation = Quaternion.identity;
@@ -53,37 +50,17 @@ public class TunnelGenerator : SingletonMonoBehaviour<TunnelGenerator>
         /// tunnel generation
         // generate random length of the tunnel
         int segmentCount = Random.Range(lengthMin, lengthMax);
-        // make a list to hold the tunnel segments
-        List<Transform> segmentTransformList = new List<Transform>();
         // generate tunnel segments to make a tunnel
         for (int i = 0; i < segmentCount; ++i)
         {
             Transform segmentTransform = Instantiate(tunnelSettings.TunnelSegmentPrefab, tunnelParent).transform;
             segmentTransform.position = new Vector3(0, 0, segmentLength * i);
-            
-            segmentTransformList.Add(segmentTransform);
 
             // add reference
             tunnelParentScript.segments.Add(segmentTransform.GetComponent<TunnelSegment>());
-
-            
-
-            if(interactables.Length!=0){
-                //randomly place item
-                float randomN = Random.Range(0f, 100f);
-                if (randomN <= 10f) //10% chance of generate item
-                {
-                    int randomIndex = Random.Range(0, interactables.Length);
-                    int randomPlaneIndex = Random.Range(0, 11);
-                    Transform plane = segmentTransform.GetChild(randomPlaneIndex);
-                    Vector3 localYAxis = plane.forward;
-                    Vector3 newPosition = plane.position - localYAxis * 2f;
-                    GameObject newItem = Instantiate(interactables[randomIndex], newPosition, Quaternion.identity, plane);
-                }
-            }
-
-
         }
+
+	
 
         // Generate Camera
         if(tunnelSettings.cinemachineVirtualCamera != null)
@@ -137,10 +114,37 @@ public class TunnelGenerator : SingletonMonoBehaviour<TunnelGenerator>
         }
 
 
-
         /// Make a hole on the tunnel
+        // generate the index where the whole should appear, but only should be around the last 30% and not the last tile of the tunnel
+        int holeSegmentIndex = Random.Range(Mathf.RoundToInt(0.7f * segmentCount), segmentCount-1);
+        TunnelSegment tunnelSegment = tunnelParentScript.segments[holeSegmentIndex];
+        currentHole = tunnelSegment.MakeHole();
+        // record the hole
+        tunnelParentScript.hole = currentHole;
+
+
+        /// generate traps and collectiables
+        // traps and collectiables should only appear from 30% of the segmentCount before the holeSegmentIndex
+        int itemGenerationStartIndex = Mathf.RoundToInt(0.3f * segmentCount);
+        int itemGenerationEndIndex = holeSegmentIndex - 1;
+        int yarnBallGenerationIndex = Random.Range(itemGenerationStartIndex, itemGenerationEndIndex + 1);
+        for (int i = itemGenerationStartIndex; i < itemGenerationEndIndex; i++)
+        {
+            if (StatManager.Instance.CanGenerateYarnBall() && i == yarnBallGenerationIndex)
+            {
+                tunnelParentScript.segments[i].GenerateYarnBall();
+            }
+            else
+            {
+                tunnelParentScript.segments[i].GenerateTrap();
+            }
+        }
+
+
         // generate the index where the whole should appear, but only should be around the last 30% of the tunnel
 
+        // Big Hole
+        /*
         if(true) //Make big Hole
         {
             int holeSegmentIndex = Random.Range(Mathf.RoundToInt(0.7f * segmentCount), segmentCount);
@@ -157,16 +161,18 @@ public class TunnelGenerator : SingletonMonoBehaviour<TunnelGenerator>
                 segmentTransformList[holeSegmentIndex + 1].GetComponent<TunnelSegment>().JustEraseTiles();
 
 
-        }
+        }*/
 
 
-
+        /* Hole sign
         if (holeSign!=null){
             //add a sign to the hole
             Vector3 localZ = currentHole.forward;
             Vector3 newPosition = currentHole.position - localZ * 2f;
             Instantiate(holeSign, newPosition, currentHole.rotation, currentHole);
         }
+        /*/
+
 
         return tunnelParentScript;
     }
