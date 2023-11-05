@@ -101,6 +101,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   sound: {fileID: 8300000, guid: 97ec73e00f4a62440a3bda8c01765e91, type: 3}
+  hasMoveY: 0
+  rotate: 0
 --- !u!65 &2125065586607766968
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -112,8 +114,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 9.72, y: 1.7, z: 3.24}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 9.72, y: 1.2496315, z: 2.5303414}
+  m_Center: {x: 5.3947396e-18, y: -0.22518426, z: 0.003526628}
 --- !u!1 &3906798737055735893
 GameObject:
   m_ObjectHideFlags: 0
