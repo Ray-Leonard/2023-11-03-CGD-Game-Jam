@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System;
 using System.Threading.Tasks;
+using System.Collections;
 
 //keeps track of player stats and also display UI
 public class StatManager : SingletonMonoBehaviour<StatManager>
@@ -128,12 +129,13 @@ public class StatManager : SingletonMonoBehaviour<StatManager>
 
         OnPlayerDead?.Invoke();
         // reload the scene in 3 seconds.
-        ReloadScene();
+        StartCoroutine( ReloadScene());
     }
 
-    private async void ReloadScene()
+    private IEnumerator ReloadScene()
     {
-        await Task.Delay(3000);
+        //await Task.Delay(3000);
+        yield return new WaitForSeconds(3);
         SceneManager.LoadScene("Interactables"); //change this
 
     }
