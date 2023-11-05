@@ -430,7 +430,7 @@ MonoBehaviour:
   m_BlendUpdateMethod: 1
   m_DefaultBlend:
     m_Style: 1
-    m_Time: 0.5
+    m_Time: 2
     m_CustomCurve:
       serializedVersion: 2
       m_Curve: []
@@ -1007,11 +1007,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 206b09b0b789c0c4088b56b5e2731d9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tunnelSegmentPrefab: {fileID: 3374761004631601044, guid: 39c64e86531f52748bc1809ae71ca217,
+    type: 3}
+  tunnelEndWallPrefab: {fileID: 8888723832830869985, guid: b479d0f89c75db147bbba5eb28083daf,
+    type: 3}
   baseTunnelSettings: {fileID: 11400000, guid: e9aa7279d39a4fa47879c339d46f1980, type: 2}
-  multiTunnelSettings:
-  - {fileID: 11400000, guid: e9aa7279d39a4fa47879c339d46f1980, type: 2}
-  - {fileID: 11400000, guid: e9aa7279d39a4fa47879c339d46f1980, type: 2}
-  - {fileID: 11400000, guid: 0b85c658ef752ef4d9047805f2efbd04, type: 2}
+  multiTunnelSettings: []
   currentHole: {fileID: 0}
 --- !u!4 &607007315
 Transform:
@@ -1556,8 +1557,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -2.699997, y: -0.00010681152}
+  m_SizeDelta: {x: -10.7779, y: -10.7779}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &949553335
 MonoBehaviour:
@@ -2675,7 +2676,7 @@ MonoBehaviour:
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
-    ModeOverride: 2
+    ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
     m_SensorSize: {x: 1, y: 1}
@@ -2828,8 +2829,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -2.699997, y: -0.00010681152}
+  m_SizeDelta: {x: -10.7779, y: -10.7779}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1598644203
 MonoBehaviour:
