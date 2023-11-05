@@ -45,6 +45,9 @@ public class TunnelRotationControl : MonoBehaviour
 
     private void HandleInput()
     {
+        if (!playerControl3d.playerControlSettings.canRotateWorld)
+            return;
+
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             inTunnelRotationDelta += rotationStep;

@@ -10,22 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 582e95667e4564f4c9e3b6801337625e, type: 3}
-  m_Name: Base Tunnel
+  m_Name: Tunnel 2D
   m_EditorClassIdentifier: 
-  makeBigHole: 0
+  makeBigHole: 1
   playerControlSettings:
-    canSwitchLanes: 1
+    canSwitchLanes: 0
     canJump: 1
-    canRotateWorld: 1
+    canRotateWorld: 0
     canMoveFoward: 1
-  tunnelSegmentPrefab: {fileID: 3374761004631601044, guid: 39c64e86531f52748bc1809ae71ca217,
+  tunnelSegmentPrefab: {fileID: 3374761004631601044, guid: fa297a262e0f5654a929a6dc77caa7cf,
     type: 3}
   tunnelEndWallPrefab: {fileID: 8888723832830869985, guid: b479d0f89c75db147bbba5eb28083daf,
     type: 3}
   tunnelLengthMin: 20
   tunnelLengthMax: 40
   tunnelSegmentLength: 2
-  cinemachineVirtualCamera: {fileID: 0}
-  camPos: {x: 0, y: 0, z: 0}
-  camRot: {x: 0, y: 0, z: 0}
+  cinemachineVirtualCamera: {fileID: 3950890373573421508, guid: 58881b0eff6e7294e9a1d2f99e12b756,
+    type: 3}
+  camPos: {x: 7, y: 0.14999998, z: 6}
+  camRot: {x: 0, y: 270, z: 0}
   camRot2: {x: 0, y: 0, z: 0, w: 0}

@@ -76,7 +76,7 @@ public class StatManager : SingletonMonoBehaviour<StatManager>
     //score == yarn collection
     private void UpdateScore()
     {
-        scoreBar.UpdateScoreUI(score);
+        scoreBar?.UpdateScoreUI(score);
         if (score >= winScore)
         {
             Win();
@@ -85,7 +85,7 @@ public class StatManager : SingletonMonoBehaviour<StatManager>
 
     private void UpdateHealth()
     {
-        healthBar.UpdateHealthUI(health);
+        healthBar?.UpdateHealthUI(health);
         if (health == 0)
         {
             Death();

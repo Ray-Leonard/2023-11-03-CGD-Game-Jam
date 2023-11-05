@@ -6,8 +6,19 @@ using UnityEngine;
 [CreateAssetMenu()]
 public class SOTunnelSettings : ScriptableObject
 {
+    [SerializeField] private bool makeBigHole = false;
+    public bool MakeBigHole { get { return makeBigHole; } }
+    [Space]
     public PlayerControlSettings playerControlSettings;
     [Space]
+
+    [SerializeField] private GameObject tunnelSegmentPrefab;
+    public GameObject TunnelSegmentPrefab { get { return tunnelSegmentPrefab; } }
+    [SerializeField] private GameObject tunnelEndWallPrefab;
+    public GameObject TunnelEndWallPrefab { get { return tunnelEndWallPrefab; } }
+
+    [Space]
+
     [SerializeField] private int tunnelLengthMin = 20;
     public int TunnelLengthMin { get { return tunnelLengthMin;}}
 
@@ -17,4 +28,8 @@ public class SOTunnelSettings : ScriptableObject
     public float TunnelSegmentLength { get { return tunnelSegmentLength; } }
     [Space]
     public CinemachineVirtualCamera cinemachineVirtualCamera;
+
+    public Vector3 camPos;
+    public Vector3 camRot;
+    public Quaternion camRot2;
 }
