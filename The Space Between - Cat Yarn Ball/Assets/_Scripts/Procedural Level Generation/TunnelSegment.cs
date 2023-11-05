@@ -15,6 +15,8 @@ public class TunnelSegment : MonoBehaviour
     [SerializeField] private GameObject holeSign;
     [SerializeField] private GameObject[] traps;
 
+    [SerializeField] private int difficultyMultiplier = 1;
+
     public bool generateTraps = true;
 
     public Transform MakeHole()
@@ -109,7 +111,7 @@ public class TunnelSegment : MonoBehaviour
             return;
         }
 
-        int trapCount = Random.Range(1, Mathf.CeilToInt(maxTrapCount * difficulty));
+        int trapCount = Random.Range(1, Mathf.CeilToInt(maxTrapCount * difficulty * difficultyMultiplier));
 
         bool[] isTileOccupied = new bool[childCount];
         for(int i = 0; i < childCount; i++)

@@ -930,8 +930,10 @@ MonoBehaviour:
     type: 3}
   holeSign: {fileID: 4088631793296918952, guid: 9b9f63b380a95d74c909432125540a55,
     type: 3}
-  traps: []
-  generateTraps: 0
+  traps:
+  - {fileID: 2149981864315834989, guid: 3aecf74b6ee4304429c3c88f84926e9c, type: 3}
+  difficultyMultiplier: 3
+  generateTraps: 1
 --- !u!65 &919329034710763376
 BoxCollider:
   m_ObjectHideFlags: 0
