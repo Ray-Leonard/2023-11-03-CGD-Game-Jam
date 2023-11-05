@@ -1468,7 +1468,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c818ae8718a3bc3459174ec7f6e04073, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d0aa22c6c06312040906f0ae0ad2aabc, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2564,7 +2564,7 @@ MonoBehaviour:
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
-    ModeOverride: 0
+    ModeOverride: 2
     LensShift: {x: 0, y: 0}
     GateFit: 2
     m_SensorSize: {x: 1, y: 1}
@@ -2740,7 +2740,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 664f143437bcf554fb1c34c5f0cbce11, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dea88ffffd672c34ab8de2fcb6a9937b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

@@ -113,7 +113,7 @@ public class TunnelSegment : MonoBehaviour
         // query the level difficulty
         float difficulty = StatManager.Instance.GetLevelDifficulty();
         // decide if generate trap
-        if(Random.Range(0f, 1f) > difficulty)
+        if(Random.Range(0f, 1f) > difficulty * 0.7f)
         {
             return;
         }
