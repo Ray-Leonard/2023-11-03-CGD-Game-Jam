@@ -6,6 +6,9 @@ using UnityEngine;
 [CreateAssetMenu()]
 public class SOTunnelSettings : ScriptableObject
 {
+    [SerializeField] private bool is2D = false;
+    public bool Is2D { get { return is2D; } }
+
     [SerializeField] private bool makeBigHole = false;
     public bool MakeBigHole { get { return makeBigHole; } }
     [Space]

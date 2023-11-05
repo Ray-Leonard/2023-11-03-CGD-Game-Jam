@@ -122,6 +122,8 @@ public class TunnelGenerator : SingletonMonoBehaviour<TunnelGenerator>
         {
             PlayerControl3d player = PlayerControl3d.Instance;
             player.playerControlSettings = tunnelSettings.playerControlSettings;
+
+            AudioController.Instance?.SetFocus(tunnelSettings.Is2D? 1: 0);
         });
 
         // generate end wall after the loop

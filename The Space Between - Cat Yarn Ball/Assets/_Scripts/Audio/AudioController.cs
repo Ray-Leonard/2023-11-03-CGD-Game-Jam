@@ -6,7 +6,8 @@ public class AudioController : SingletonMonoBehaviour<AudioController>
 {
     public AudioSource[] audioSources;
 
-    public int sourceFocus;
+    [SerializeField] private int currentFocus = 0;
+
     public float transitionDuration = 1;
 
     public float normalVolume = 0.5f;
@@ -16,8 +17,28 @@ public class AudioController : SingletonMonoBehaviour<AudioController>
         DontDestroyOnLoad(this);
     }
 
+    public void InstantFocus(int numFocus)
+    {
+        for (int i = 0; i < audioSources.Length; i++)
+        {
+            if(i == numFocus)
+            {
+                audioSources[i].volume = normalVolume;
+            }
+            else
+            {
+                audioSources[i].volume = 0;
+            }
+        }
+    }
+
+    /// Set the audio source Focus
+    // 0 is normal, 1 is flat
     public void SetFocus(int numFocus)
     {
+        if (currentFocus == numFocus)
+            return;
+
         for (int i = 0; i < audioSources.Length; i++)
         {
             if(i == numFocus)
@@ -29,6 +50,8 @@ public class AudioController : SingletonMonoBehaviour<AudioController>
                 StartCoroutine(AudioTransition(audioSources[i], normalVolume, 0));
             }
         }
+        currentFocus = numFocus;
+
     }
 
     [ContextMenu("Set Focus 0")]
