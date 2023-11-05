@@ -535,7 +535,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 433043018}
-  m_LocalRotation: {x: 0.14293365, y: 0.000000019039792, z: -0.0000000027496598, w: 0.98973227}
+  m_LocalRotation: {x: 0.14293365, y: -0.00000001903979, z: 0.0000000027496596, w: 0.98973227}
   m_LocalPosition: {x: 0, y: 3.12, z: -2.2120001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1007,11 +1007,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 206b09b0b789c0c4088b56b5e2731d9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tunnelSegmentPrefab: {fileID: 3374761004631601044, guid: 39c64e86531f52748bc1809ae71ca217,
-    type: 3}
-  tunnelEndWallPrefab: {fileID: 8888723832830869985, guid: b479d0f89c75db147bbba5eb28083daf,
-    type: 3}
   baseTunnelSettings: {fileID: 11400000, guid: e9aa7279d39a4fa47879c339d46f1980, type: 2}
+  multiTunnelSettings:
+  - {fileID: 11400000, guid: e9aa7279d39a4fa47879c339d46f1980, type: 2}
+  - {fileID: 11400000, guid: e9aa7279d39a4fa47879c339d46f1980, type: 2}
+  - {fileID: 11400000, guid: 0b85c658ef752ef4d9047805f2efbd04, type: 2}
   currentHole: {fileID: 0}
 --- !u!4 &607007315
 Transform:
@@ -2694,7 +2694,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1501644456}
-  m_LocalRotation: {x: 0.14293365, y: 0.000000019039792, z: -0.0000000027496598, w: 0.98973227}
+  m_LocalRotation: {x: 0.14293365, y: -0.00000001903979, z: 0.0000000027496596, w: 0.98973227}
   m_LocalPosition: {x: 0, y: 3.12, z: -2.2120001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

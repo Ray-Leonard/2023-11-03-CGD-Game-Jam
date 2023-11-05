@@ -85,7 +85,7 @@ public class StatManager : SingletonMonoBehaviour<StatManager>
 
     private void UpdateHealth()
     {
-        healthBar.UpdateHealthUI(health);
+        healthBar?.UpdateHealthUI(health);
         if (health == 0)
         {
             Death();

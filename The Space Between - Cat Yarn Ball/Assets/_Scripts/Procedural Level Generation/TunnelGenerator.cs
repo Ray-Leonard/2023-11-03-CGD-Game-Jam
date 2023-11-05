@@ -115,13 +115,36 @@ public class TunnelGenerator : SingletonMonoBehaviour<TunnelGenerator>
 
 
         /// Make a hole on the tunnel
-        // generate the index where the whole should appear, but only should be around the last 30% and not the last tile of the tunnel
-        int holeSegmentIndex = Random.Range(Mathf.RoundToInt(0.7f * segmentCount), segmentCount-1);
-        TunnelSegment tunnelSegment = tunnelParentScript.segments[holeSegmentIndex];
-        currentHole = tunnelSegment.MakeHole();
-        // record the hole
-        tunnelParentScript.hole = currentHole;
 
+
+        // Big Hole
+
+        int holeSegmentIndex = 0;
+        if (tunnelSettings.MakeBigHole) //Make big Hole
+        {
+            holeSegmentIndex = Random.Range(Mathf.RoundToInt(0.7f * segmentCount), segmentCount);
+            int numRows = Mathf.Min(2, segmentCount - holeSegmentIndex);
+
+            TunnelSegment tunnelSegment = tunnelParentScript.segments[holeSegmentIndex];
+            currentHole = tunnelSegment.MakeBigHole();
+            // record the hole
+            tunnelParentScript.hole = currentHole;
+
+            // previous tile
+            tunnelParentScript.segments[holeSegmentIndex -1].GetComponent<TunnelSegment>().JustEraseTiles();
+            if(holeSegmentIndex+1 < segmentCount)
+                tunnelParentScript.segments[holeSegmentIndex + 1].GetComponent<TunnelSegment>().JustEraseTiles();
+        }
+        else
+        {
+            // Small Hole
+            // generate the index where the whole should appear, but only should be around the last 30% and not the last tile of the tunnel
+            holeSegmentIndex = Random.Range(Mathf.RoundToInt(0.7f * segmentCount), segmentCount - 1);
+            TunnelSegment tunnelSegment = tunnelParentScript.segments[holeSegmentIndex];
+            currentHole = tunnelSegment.MakeHole();
+            // record the hole
+            tunnelParentScript.hole = currentHole;
+        }
 
         /// generate traps and collectiables
         // traps and collectiables should only appear from 30% of the segmentCount before the holeSegmentIndex
@@ -139,30 +162,6 @@ public class TunnelGenerator : SingletonMonoBehaviour<TunnelGenerator>
                 tunnelParentScript.segments[i].GenerateTrap();
             }
         }
-
-
-        // generate the index where the whole should appear, but only should be around the last 30% of the tunnel
-
-        // Big Hole
-        /*
-        if(true) //Make big Hole
-        {
-            int holeSegmentIndex = Random.Range(Mathf.RoundToInt(0.7f * segmentCount), segmentCount);
-            int numRows = Mathf.Min(2, segmentCount - holeSegmentIndex);
-
-            TunnelSegment tunnelSegment = segmentTransformList[holeSegmentIndex].GetComponent<TunnelSegment>();
-            currentHole = tunnelSegment.MakeBigHole();
-            // record the hole
-            tunnelParentScript.hole = currentHole;
-
-            // previous tile
-            segmentTransformList[holeSegmentIndex -1].GetComponent<TunnelSegment>().JustEraseTiles();
-            if(holeSegmentIndex+1 < segmentCount)
-                segmentTransformList[holeSegmentIndex + 1].GetComponent<TunnelSegment>().JustEraseTiles();
-
-
-        }*/
-
 
         /* Hole sign
         if (holeSign!=null){
