@@ -96,6 +96,13 @@ public class TunnelGenerator : SingletonMonoBehaviour<TunnelGenerator>
             });
         }
 
+        // Add Events
+        tunnelParentScript.enterEvent.AddListener(() =>
+        {
+            PlayerControl3d player = PlayerControl3d.Instance;
+            player.playerControlSettings = tunnelSettings.playerControlSettings;
+        });
+
         // generate end wall after the loop
         Transform tunnelEndWall = Instantiate(tunnelSettings.TunnelEndWallPrefab, tunnelParent).transform;
         tunnelEndWall.position = new Vector3(0, 0, segmentCount * segmentLength - 0.5f * segmentLength);

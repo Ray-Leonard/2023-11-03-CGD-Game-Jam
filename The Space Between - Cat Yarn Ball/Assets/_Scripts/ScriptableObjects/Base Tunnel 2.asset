@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 582e95667e4564f4c9e3b6801337625e, type: 3}
   m_Name: Base Tunnel 2
   m_EditorClassIdentifier: 
+  makeBigHole: 0
   playerControlSettings:
     canSwitchLanes: 1
     canJump: 1
@@ -25,3 +26,6 @@ MonoBehaviour:
   tunnelLengthMax: 80
   tunnelSegmentLength: 2
   cinemachineVirtualCamera: {fileID: 0}
+  camPos: {x: 0, y: 0, z: 0}
+  camRot: {x: 0, y: 0, z: 0}
+  camRot2: {x: 0, y: 0, z: 0, w: 0}

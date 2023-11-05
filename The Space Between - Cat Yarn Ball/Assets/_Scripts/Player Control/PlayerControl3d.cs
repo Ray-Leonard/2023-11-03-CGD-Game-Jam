@@ -35,8 +35,8 @@ public class PlayerControl3d : SingletonMonoBehaviour<PlayerControl3d>
     }
 
 
-    [Header("Zone Settings")]
-    public bool canSwitchLanes = true;
+    [Header("Controll Settings")]
+    public PlayerControlSettings playerControlSettings;
 
     private bool isLock;
 
@@ -77,7 +77,7 @@ public class PlayerControl3d : SingletonMonoBehaviour<PlayerControl3d>
 
     private void HandleMovementInput()
     {
-        if (canSwitchLanes)
+        if (playerControlSettings.canSwitchLanes)
         {
             // switch lane
             if (Input.GetKeyDown(KeyCode.A))

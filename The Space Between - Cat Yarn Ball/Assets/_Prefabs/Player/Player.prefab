@@ -179,6 +179,11 @@ MonoBehaviour:
   horizontalSmoothFactor: 10
   jumpForce: 5
   groundLayerName: Ground
+  playerControlSettings:
+    canSwitchLanes: 1
+    canJump: 1
+    canRotateWorld: 1
+    canMoveFoward: 1
   canSwitchLanes: 1
 --- !u!1001 &9119280589503995746
 PrefabInstance:
