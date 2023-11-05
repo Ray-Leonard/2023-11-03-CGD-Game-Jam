@@ -201,7 +201,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_LocalRotation: {x: 0.098537624, y: -0.0000000042806607, z: 4.238689e-10, w: 0.99513334}
+  m_LocalRotation: {x: 0.09853762, y: 0.000000004280661, z: -4.238689e-10, w: 0.99513334}
   m_LocalPosition: {x: 0, y: 3.12, z: -3.822}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -578,7 +578,7 @@ MonoBehaviour:
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
-    ModeOverride: 0
+    ModeOverride: 2
     LensShift: {x: 0, y: 0}
     GateFit: 2
     m_SensorSize: {x: 1, y: 1}
@@ -597,7 +597,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 880020355}
-  m_LocalRotation: {x: 0.098537624, y: -0.0000000042806607, z: 4.238689e-10, w: 0.99513334}
+  m_LocalRotation: {x: 0.09853762, y: 0.000000004280661, z: -4.238689e-10, w: 0.99513334}
   m_LocalPosition: {x: 0, y: 3.12, z: -3.822}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -642,15 +642,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 206b09b0b789c0c4088b56b5e2731d9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tunnelSegmentPrefab: {fileID: 3374761004631601044, guid: 39c64e86531f52748bc1809ae71ca217,
-    type: 3}
-  tunnelEndWallPrefab: {fileID: 8888723832830869985, guid: b479d0f89c75db147bbba5eb28083daf,
-    type: 3}
   baseTunnelSettings: {fileID: 11400000, guid: e9aa7279d39a4fa47879c339d46f1980, type: 2}
   multiTunnelSettings:
   - {fileID: 11400000, guid: e9aa7279d39a4fa47879c339d46f1980, type: 2}
-  - {fileID: 11400000, guid: e9aa7279d39a4fa47879c339d46f1980, type: 2}
-  - {fileID: 11400000, guid: e9aa7279d39a4fa47879c339d46f1980, type: 2}
+  - {fileID: 11400000, guid: 0b85c658ef752ef4d9047805f2efbd04, type: 2}
+  - {fileID: 11400000, guid: 2d444b99e5601364dbd37405d75dde46, type: 2}
   currentHole: {fileID: 0}
   interactables: []
   holeSign: {fileID: 0}
@@ -854,6 +850,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 882352543}
+  - {fileID: 1665944801}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -891,3 +888,47 @@ MonoBehaviour:
   jumpForce: 5
   groundLayerName: Ground
   canSwitchLanes: 1
+--- !u!1 &1665944800
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1665944801}
+  - component: {fileID: 1665944802}
+  m_Layer: 0
+  m_Name: CamPos2D
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1665944801
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1665944800}
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 7, y: 0.14999998, z: 6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1370445572}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1665944802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1665944800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 186ae499440704c47a4e7d1987144f09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

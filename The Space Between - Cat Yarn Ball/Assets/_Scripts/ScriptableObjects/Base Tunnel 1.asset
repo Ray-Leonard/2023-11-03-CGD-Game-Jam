@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 582e95667e4564f4c9e3b6801337625e, type: 3}
-  m_Name: Base Tunnel
+  m_Name: Base Tunnel 1
   m_EditorClassIdentifier: 
   playerControlSettings:
     canSwitchLanes: 1
@@ -21,7 +21,7 @@ MonoBehaviour:
     type: 3}
   tunnelEndWallPrefab: {fileID: 8888723832830869985, guid: b479d0f89c75db147bbba5eb28083daf,
     type: 3}
-  tunnelLengthMin: 20
-  tunnelLengthMax: 40
+  tunnelLengthMin: 40
+  tunnelLengthMax: 60
   tunnelSegmentLength: 2
   cinemachineVirtualCamera: {fileID: 0}
