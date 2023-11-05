@@ -2884,7 +2884,7 @@ MonoBehaviour:
   scoreBar: {fileID: 1174168774}
   score: 0
   winScore: 7
-  yarnBallCooldown: 8
+  yarnBallCooldown: 20
   yarnBallPrefabs:
   - {fileID: 2149981864315834989, guid: 7b6a5d8ad5f48fa4cb97e0a399d9df5f, type: 3}
   - {fileID: 2149981864315834989, guid: 672e01222c5b919499c6d2d6eb1b4b4c, type: 3}
@@ -3632,11 +3632,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 9119280589519895975, guid: ee6d4cc9c4e3f9146a2514b869a04689,
-        type: 3}
-      propertyPath: groundLayerMask.m_Bits
-      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee6d4cc9c4e3f9146a2514b869a04689, type: 3}

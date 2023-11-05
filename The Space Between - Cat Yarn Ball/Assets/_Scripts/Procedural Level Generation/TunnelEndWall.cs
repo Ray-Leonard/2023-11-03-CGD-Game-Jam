@@ -7,12 +7,12 @@ public class TunnelEndWall : MonoBehaviour
     [SerializeField] Transform centerTile;
     public Transform CenterTile { get => centerTile; }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            StatManager.Instance.DeductHealth(9);
-        }
-    }
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.CompareTag("Player"))
+    //    {
+    //        StatManager.Instance.DeductHealth(9);
+    //    }
+    //}
 
 }

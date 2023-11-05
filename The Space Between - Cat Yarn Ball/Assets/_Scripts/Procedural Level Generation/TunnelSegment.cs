@@ -18,6 +18,7 @@ public class TunnelSegment : MonoBehaviour
     [SerializeField] private int difficultyMultiplier = 1;
 
     public bool generateTraps = true;
+    public bool generateBalls = true;
 
     public Transform MakeHole()
     {
@@ -98,6 +99,11 @@ public class TunnelSegment : MonoBehaviour
 
     public void GenerateYarnBall()
     {
+        if(!generateBalls)
+        {
+            return;
+        }
+
         GameObject yarnBall = StatManager.Instance.GetYarnBallPrefab();
         // choose a random tile
         Transform tile = transform.GetChild(Random.Range(0, childCount));
@@ -113,12 +119,12 @@ public class TunnelSegment : MonoBehaviour
         // query the level difficulty
         float difficulty = StatManager.Instance.GetLevelDifficulty();
         // decide if generate trap
-        if(Random.Range(0f, 1f) > difficulty * 0.7f)
+        if(Random.Range(0f, 1f) * difficultyMultiplier > difficulty * 0.5f)
         {
             return;
         }
 
-        int trapCount = Random.Range(1, Mathf.CeilToInt(maxTrapCount * difficulty * difficultyMultiplier));
+        int trapCount = Random.Range(1, Mathf.CeilToInt(maxTrapCount * difficulty));
 
         bool[] isTileOccupied = new bool[childCount];
         for(int i = 0; i < childCount; i++)
@@ -157,11 +163,11 @@ public class TunnelSegment : MonoBehaviour
 
     public void ApplyMaterial(Material mat)
     {
-        for(int i = 0; i < childCount; i++)
+        for(int i = 0; i < transform.childCount; i++)
         {
             MeshRenderer ren = transform.GetChild(i).GetComponent<MeshRenderer>();
-
-            ren.sharedMaterials = new Material[] { mat };
+            if(ren != null)
+                ren.sharedMaterials = new Material[] { mat };
         }
     }
 

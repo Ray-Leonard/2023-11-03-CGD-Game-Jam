@@ -10,7 +10,7 @@ public class UIFadeIn : MonoBehaviour
 
     private float initialAlpha; // Initial alpha value of the Image component
 
-    private void Start()
+    private void OnEnable()
     {
         // Store the initial alpha value
         initialAlpha = uiImage.color.a;

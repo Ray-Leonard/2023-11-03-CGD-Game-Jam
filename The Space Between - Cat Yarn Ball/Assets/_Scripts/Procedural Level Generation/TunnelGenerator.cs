@@ -192,8 +192,8 @@ public class TunnelGenerator : SingletonMonoBehaviour<TunnelGenerator>
  
 
         /// generate traps and collectiables
-        // traps and collectiables should only appear from 30% of the segmentCount before the holeSegmentIndex
-        int itemGenerationStartIndex = Mathf.RoundToInt(0.3f * segmentCount);
+        // traps and collectiables should only appear from 15% of the segmentCount before the holeSegmentIndex
+        int itemGenerationStartIndex = Mathf.RoundToInt(0.2f * segmentCount);
         int itemGenerationEndIndex = holeSegmentIndex - 1;
         int yarnBallGenerationIndex = Random.Range(itemGenerationStartIndex, itemGenerationEndIndex + 1);
         for (int i = itemGenerationStartIndex; i < itemGenerationEndIndex; i++)

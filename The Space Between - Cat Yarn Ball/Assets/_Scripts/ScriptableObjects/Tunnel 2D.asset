@@ -25,7 +25,7 @@ MonoBehaviour:
   tunnelEndWallPrefab: {fileID: 8888723832830869985, guid: b479d0f89c75db147bbba5eb28083daf,
     type: 3}
   tunnelLengthMin: 20
-  tunnelLengthMax: 40
+  tunnelLengthMax: 30
   tunnelSegmentLength: 2
   cinemachineVirtualCamera: {fileID: 3950890373573421508, guid: 58881b0eff6e7294e9a1d2f99e12b756,
     type: 3}

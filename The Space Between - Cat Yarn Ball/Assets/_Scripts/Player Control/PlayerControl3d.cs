@@ -74,8 +74,6 @@ public class PlayerControl3d : SingletonMonoBehaviour<PlayerControl3d>
             forwardSpeed = minForwardSpeed + (maxForwardSpeed - minForwardSpeed) * StatManager.Instance.GetLevelDifficulty();
             HandleMovement();
         }
-
-        HandleYPos();
     }
 
     private void HandleMovementInput()
@@ -122,22 +120,6 @@ public class PlayerControl3d : SingletonMonoBehaviour<PlayerControl3d>
         float currXPos = Mathf.Lerp(rb.position.x, targetXPos, horizontalSmoothFactor * Time.fixedDeltaTime);
 
         rb.MovePosition(new Vector3(currXPos, rb.position.y, rb.position.z + forwardSpeed * Time.fixedDeltaTime));
-    }
-
-    private void HandleYPos()
-    {
-
-        //RaycastHit hitInfo;
-        //// if not touching the ground
-        //if (isGrounded && !Physics.Raycast(transform.position, Vector3.down, out hitInfo, Mathf.Infinity, groundLayerMask))
-        //{
-        //    //rb.MovePosition(new Vector3(rb.position.x, rb.position.y + forwardSpeed * Time.fixedDeltaTime, rb.position.z));
-
-        //    transform.position += Vector3.up * Time.fixedDeltaTime;
-        //}
-
-
-        //Debug.DrawLine(transform.position, transform.position + Vector3.down * 10, Color.red);
     }
 
 

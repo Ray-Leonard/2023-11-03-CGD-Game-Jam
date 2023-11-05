@@ -833,7 +833,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   childCount: 12
-  maxTrapCount: 5
+  maxTrapCount: 4
   holeColliderPrefab: {fileID: 688086330459807722, guid: cafbafb854ab300408cb0d66c6a81e74,
     type: 3}
   holeSign: {fileID: 4088631793296918952, guid: 9b9f63b380a95d74c909432125540a55,
@@ -845,6 +845,7 @@ MonoBehaviour:
   - {fileID: 2149981864315834989, guid: 4d3a58a2d88cf9e4388981f156d1dbac, type: 3}
   difficultyMultiplier: 1
   generateTraps: 1
+  generateBalls: 1
 --- !u!1 &3374761004638112927
 GameObject:
   m_ObjectHideFlags: 0
