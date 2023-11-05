@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.17724045, g: 0.22188583, b: 0.30413133, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -140,7 +140,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &216553944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1010,8 +1010,6 @@ MonoBehaviour:
   baseTunnelSettings: {fileID: 11400000, guid: e9aa7279d39a4fa47879c339d46f1980, type: 2}
   multiTunnelSettings:
   - {fileID: 11400000, guid: e9aa7279d39a4fa47879c339d46f1980, type: 2}
-  - {fileID: 11400000, guid: e9aa7279d39a4fa47879c339d46f1980, type: 2}
-  - {fileID: 11400000, guid: 0b85c658ef752ef4d9047805f2efbd04, type: 2}
   currentHole: {fileID: 0}
 --- !u!4 &607007315
 Transform:
@@ -1556,8 +1554,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -2.699997, y: -0.00010681152}
-  m_SizeDelta: {x: -10.7779, y: -10.7779}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &949553335
 MonoBehaviour:
@@ -2675,7 +2673,7 @@ MonoBehaviour:
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
-    ModeOverride: 2
+    ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
     m_SensorSize: {x: 1, y: 1}
@@ -2828,8 +2826,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -2.699997, y: -0.00010681152}
-  m_SizeDelta: {x: -10.7779, y: -10.7779}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1598644203
 MonoBehaviour:

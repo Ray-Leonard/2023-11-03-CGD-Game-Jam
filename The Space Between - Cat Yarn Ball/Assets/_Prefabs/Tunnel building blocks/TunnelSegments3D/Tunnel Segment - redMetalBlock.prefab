@@ -849,6 +849,10 @@ MonoBehaviour:
     type: 3}
   traps:
   - {fileID: 2149981864315834989, guid: 72e914a60c0ecad4fab3504bd9814691, type: 3}
+  - {fileID: 2149981864315834989, guid: 72e914a60c0ecad4fab3504bd9814691, type: 3}
+  - {fileID: 2149981864315834989, guid: 4d3a58a2d88cf9e4388981f156d1dbac, type: 3}
+  difficultyMultiplier: 1
+  generateTraps: 1
 --- !u!65 &919329034710763376
 BoxCollider:
   m_ObjectHideFlags: 0
