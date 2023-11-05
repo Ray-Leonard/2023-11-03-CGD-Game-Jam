@@ -11,6 +11,7 @@ public class TunnelGenerator : SingletonMonoBehaviour<TunnelGenerator>
 
     [Header("Generation Rules")]
     [SerializeField] private SOTunnelSettings baseTunnelSettings;
+    [SerializeField] private SOTunnelSettings[] multiTunnelSettings;
     [SerializeField] private Transform currentHole;
 
     public GameObject[] interactables;
@@ -21,18 +22,22 @@ public class TunnelGenerator : SingletonMonoBehaviour<TunnelGenerator>
     private void Start()
     {
         // generate first tunnel.
-        tunnelParentQueue.Enqueue(GenerateTunnel(baseTunnelSettings.TunnelSegmentLength, baseTunnelSettings.TunnelLengthMin, baseTunnelSettings.TunnelLengthMax));
+        tunnelParentQueue.Enqueue(GenerateTunnel(GetNextTunnelSettings()));
         // assign first reference to player
         TunnelParent currentTunnel = tunnelParentQueue.Peek();
         PlayerControl3d.Instance.CurrentTunnel = currentTunnel;
         // generate second tunnel
-        tunnelParentQueue.Enqueue(GenerateTunnel(baseTunnelSettings.TunnelSegmentLength, baseTunnelSettings.TunnelLengthMin, baseTunnelSettings.TunnelLengthMax));
+        tunnelParentQueue.Enqueue(GenerateTunnel(GetNextTunnelSettings()));
     }
 
 
     [ContextMenu("Generate Tunnel")]
-    private TunnelParent GenerateTunnel(float segmentLength, int lengthMin, int lengthMax)
+    private TunnelParent GenerateTunnel(SOTunnelSettings tunnelSettings)
     {
+        float segmentLength = tunnelSettings.TunnelSegmentLength;
+        int lengthMin = tunnelSettings.TunnelLengthMin;
+        int lengthMax = tunnelSettings.TunnelLengthMax;
+
         /// generate a tunnel parent to hold the tunnel, at world origin
         Transform tunnelParent = new GameObject().transform;
         // configure the tunnel parent's original position/rotation
@@ -126,10 +131,15 @@ public class TunnelGenerator : SingletonMonoBehaviour<TunnelGenerator>
         Destroy(tunnelParentQueue.Dequeue().gameObject, 1f);
 
         // generate next one and enqueue
-        tunnelParentQueue.Enqueue(GenerateTunnel(baseTunnelSettings.TunnelSegmentLength, baseTunnelSettings.TunnelLengthMin, baseTunnelSettings.TunnelLengthMax));
+        tunnelParentQueue.Enqueue(GenerateTunnel(GetNextTunnelSettings()));
 
         // return the top of queue
         return tunnelParentQueue.Peek();
+    }
+
+    private SOTunnelSettings GetNextTunnelSettings()
+    {
+        return baseTunnelSettings;
     }
 
 }

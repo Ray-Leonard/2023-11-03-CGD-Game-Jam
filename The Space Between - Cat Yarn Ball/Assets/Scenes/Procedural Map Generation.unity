@@ -647,6 +647,10 @@ MonoBehaviour:
   tunnelEndWallPrefab: {fileID: 8888723832830869985, guid: b479d0f89c75db147bbba5eb28083daf,
     type: 3}
   baseTunnelSettings: {fileID: 11400000, guid: e9aa7279d39a4fa47879c339d46f1980, type: 2}
+  multiTunnelSettings:
+  - {fileID: 11400000, guid: e9aa7279d39a4fa47879c339d46f1980, type: 2}
+  - {fileID: 11400000, guid: e9aa7279d39a4fa47879c339d46f1980, type: 2}
+  - {fileID: 11400000, guid: e9aa7279d39a4fa47879c339d46f1980, type: 2}
   currentHole: {fileID: 0}
   interactables: []
   holeSign: {fileID: 0}
