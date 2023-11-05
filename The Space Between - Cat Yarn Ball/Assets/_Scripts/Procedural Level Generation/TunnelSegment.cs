@@ -19,7 +19,8 @@ public class TunnelSegment : MonoBehaviour
     public Transform MakeHole()
     {
         // choose a random child and disable that
-        Transform hole = transform.GetChild(Random.Range(0, transform.childCount));
+        int holeIndex = Random.Range(0, transform.childCount);
+        Transform hole = transform.GetChild(holeIndex);
         hole.GetComponent<MeshRenderer>().enabled = false;
         hole.GetComponent<Collider>().enabled = false;
 
@@ -27,10 +28,13 @@ public class TunnelSegment : MonoBehaviour
         TunnelHole tunnelHoleScript = Instantiate(holeColliderPrefab, hole).GetComponent<TunnelHole>();
         // assign current parent to hole script
         //tunnelHoleScript.tunnelParent = transform.parent.GetComponent<TunnelParent>();
+        // move the collider
         tunnelHoleScript.transform.position += tunnelHoleScript.transform.forward;
 
-        // generate hole sign
-        Instantiate(holeSign, hole.position - 2 * hole.forward, hole.rotation, hole);
+        // generate hole sign after the hole tile
+        Transform holeSignTransform = Instantiate(holeSign, hole).transform;
+        holeSignTransform.localRotation = Quaternion.Euler(-90f, 0, 0);
+        holeSignTransform.position += (hole.up * 2f) - (0.5f * hole.forward);
 
         // then return the transform of that quad
         return hole;
