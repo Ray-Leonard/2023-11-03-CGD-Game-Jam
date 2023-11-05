@@ -24,8 +24,11 @@ public class TunnelSegment : MonoBehaviour
         // choose a random child and disable that
         int holeIndex = Random.Range(0, transform.childCount);
         Transform hole = transform.GetChild(holeIndex);
-        hole.GetComponent<MeshRenderer>().enabled = false;
-        hole.GetComponent<Collider>().enabled = false;
+
+        var mesh = hole.GetComponent<MeshRenderer>();
+        var coll = hole.GetComponent<Collider>();
+        if (mesh) mesh.enabled = false;
+        if (coll) coll.enabled = false;
 
         // add a trigger collider to that hole
         TunnelHole tunnelHoleScript = Instantiate(holeColliderPrefab, hole).GetComponent<TunnelHole>();

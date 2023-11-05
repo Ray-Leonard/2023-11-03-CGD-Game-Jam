@@ -87,11 +87,12 @@ public class TunnelGenerator : SingletonMonoBehaviour<TunnelGenerator>
                 //CinemachineVirtualCamera virtualCamera = Instantiate(tunnelSettings.cinemachineVirtualCamera, camPos.position, camPos.rotation, null);
                 //CinemachineVirtualCamera virtualCamera = Instantiate(tunnelSettings.cinemachineVirtualCamera, camPos.transform);
 
-                tunnelParentScript.cam = virtualCamera.transform;
+                tunnelParentScript.virtualCamera = virtualCamera;
 
                 virtualCamera.LookAt = player;
                 virtualCamera.Follow = player;
             });
+
         }
 
         // Add Events

@@ -142,13 +142,14 @@ public class PlayerControl3d : SingletonMonoBehaviour<PlayerControl3d>
             // destroy the collider so it does not trigger multiple times
             Destroy(tunnelHole.gameObject);
 
-            
+            // Call exit Tunnel Actions
+            currentTunnel.OnExit();
 
             // advance current parent to next parent
             currentTunnel = TunnelGenerator.Instance.GenerateNextTunnel();
 
             // Call Enter Tunnel Actions
-            currentTunnel.ActivateAction();
+            currentTunnel.OnEnter();
 
             // correction of centerXPos
             centerXPos = currentTunnel.transform.position.x;
