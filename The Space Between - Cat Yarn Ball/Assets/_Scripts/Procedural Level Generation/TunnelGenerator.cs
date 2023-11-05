@@ -210,11 +210,19 @@ public class TunnelGenerator : SingletonMonoBehaviour<TunnelGenerator>
         return tunnelParentQueue.Peek();
     }
 
+    bool isFirstRun = true;
     private SOTunnelSettings GetNextTunnelSettings()
     {
         //var tunnel = multiTunnelSettings[tunnelIndex];
 
         //tunnelIndex = (tunnelIndex + 1) % multiTunnelSettings.Length;
+
+        if (isFirstRun)
+        {
+            isFirstRun = false;
+            return baseTunnelSettings;
+        }
+
 
         var tunnel = multiTunnelSettings[Random.Range(0, multiTunnelSettings.Length)];
 

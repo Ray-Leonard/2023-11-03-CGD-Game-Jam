@@ -5,7 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Procedural Map Generation.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/Main Menu.unity
+    guid: 1be5b560618219c41be2cb491267b2e6
+  - enabled: 1
+    path: Assets/Scenes/Interactables.unity
+    guid: 21c6d471354fc3c42af59981eb520b68
   m_configObjects: {}
