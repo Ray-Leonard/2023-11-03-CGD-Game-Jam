@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 public class StatManager : SingletonMonoBehaviour<StatManager>
 {
     [Header("UI")]
-    public GameObject deathScreen, winScreen;
+    public GameObject deathScreen;
     [SerializeField] private HealthBar healthBar;
     [SerializeField] private YarnBallBar scoreBar; //displays yarn ball collection
 
@@ -140,7 +140,6 @@ public class StatManager : SingletonMonoBehaviour<StatManager>
 
     public void Win()
     {
-        if (winScreen != null) winScreen.SetActive(true);
     }
 
 
