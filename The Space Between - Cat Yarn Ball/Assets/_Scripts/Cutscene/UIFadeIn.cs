@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class UIFadeIn : MonoBehaviour
 {
+    public float waitFadeDuration = 00f;
     public float fadeDuration = 2.0f; // Duration of the fade-in effect in seconds
     public Image uiImage; // Reference to the UI Image component
 
@@ -25,6 +26,8 @@ public class UIFadeIn : MonoBehaviour
 
     private IEnumerator FadeIn()
     {
+
+        yield return new WaitForSeconds(waitFadeDuration);
         float elapsedTime = 0;
         while (elapsedTime < fadeDuration)
         {

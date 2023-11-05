@@ -142,6 +142,7 @@ public class StatManager : SingletonMonoBehaviour<StatManager>
 
     public void Win()
     {
+        GameStateManager.Instance.gameState = GameState.EndingGame;
     }
 
 

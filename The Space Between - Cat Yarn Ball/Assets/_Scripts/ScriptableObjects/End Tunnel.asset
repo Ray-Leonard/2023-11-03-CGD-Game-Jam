@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 582e95667e4564f4c9e3b6801337625e, type: 3}
+  m_Name: End Tunnel
+  m_EditorClassIdentifier: 
+  is2D: 0
+  makeBigHole: 0
+  makeHole: 0
+  playerControlSettings:
+    canSwitchLanes: 1
+    canJump: 1
+    canRotateWorld: 0
+    canMoveFoward: 1
+  tunnelSegmentPrefab: {fileID: 3374761004631601044, guid: aa1200405e7719d4e9dde2514977e123,
+    type: 3}
+  tunnelEndWallPrefab: {fileID: 8888723832830869985, guid: ceb5adf489299fd4e8c3c7d27e1fca72,
+    type: 3}
+  tunnelLengthMin: 50
+  tunnelLengthMax: 50
+  tunnelSegmentLength: 2
+  cinemachineVirtualCamera: {fileID: 0}
+  camPos: {x: 0, y: 0, z: 0}
+  camRot: {x: 0, y: 0, z: 0}
+  camRot2: {x: 0, y: 0, z: 0, w: 0}
