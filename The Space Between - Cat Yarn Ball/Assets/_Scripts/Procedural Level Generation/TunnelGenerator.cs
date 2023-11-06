@@ -130,6 +130,11 @@ public class TunnelGenerator : SingletonMonoBehaviour<TunnelGenerator>
             if (tunnelSettings.EngGameTunnel)
             {
                 GameStateManager.Instance.StartEndGame();
+                PlayerVisualControl.Instance.Set3DModel();
+            }
+            else
+            {
+                PlayerVisualControl.Instance.SetRandom();
             }
 
             AudioController.Instance?.SetFocus(tunnelSettings.Is2D? 1: 0);
