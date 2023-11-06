@@ -2894,6 +2894,7 @@ MonoBehaviour:
   - {fileID: 2149981864315834989, guid: a65bdfa1bd5da7c4f8c3162275885995, type: 3}
   - {fileID: 2149981864315834989, guid: 790d51955f00a2a428c56f392a637bdd, type: 3}
   health: 9
+  difficulty: 2
 --- !u!4 &1673549065
 Transform:
   m_ObjectHideFlags: 0
@@ -3658,29 +3659,6 @@ PrefabInstance:
       propertyPath: baseTunnelSettings
       value: 
       objectReference: {fileID: 11400000, guid: 2d444b99e5601364dbd37405d75dde46,
-        type: 2}
-    - target: {fileID: 9154619637330679578, guid: 970fdc31cafc8304991611436164aaa3,
-        type: 3}
-      propertyPath: multiTunnelSettings.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9154619637330679578, guid: 970fdc31cafc8304991611436164aaa3,
-        type: 3}
-      propertyPath: multiTunnelSettings.Array.data[1]
-      value: 
-      objectReference: {fileID: 11400000, guid: 0b85c658ef752ef4d9047805f2efbd04,
-        type: 2}
-    - target: {fileID: 9154619637330679578, guid: 970fdc31cafc8304991611436164aaa3,
-        type: 3}
-      propertyPath: multiTunnelSettings.Array.data[2]
-      value: 
-      objectReference: {fileID: 11400000, guid: 85bef7b564b37464fad6e19711da2b3d,
-        type: 2}
-    - target: {fileID: 9154619637330679578, guid: 970fdc31cafc8304991611436164aaa3,
-        type: 3}
-      propertyPath: multiTunnelSettings.Array.data[3]
-      value: 
-      objectReference: {fileID: 11400000, guid: e9aa7279d39a4fa47879c339d46f1980,
         type: 2}
     - target: {fileID: 9154619637330679579, guid: 970fdc31cafc8304991611436164aaa3,
         type: 3}
