@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Interactables.unity
     guid: 21c6d471354fc3c42af59981eb520b68
+  - enabled: 0
+    path: Assets/Scenes/End.unity
+    guid: c37cf9f7485c7ff489ef4b021126feca
   m_configObjects: {}

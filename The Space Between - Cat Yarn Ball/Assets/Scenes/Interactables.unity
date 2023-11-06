@@ -495,7 +495,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 433043018}
-  m_LocalRotation: {x: 0.14293365, y: -0.00000001903979, z: 0.0000000027496596, w: 0.98973227}
+  m_LocalRotation: {x: 0.14293365, y: 0.000000019039792, z: -0.0000000027496598, w: 0.98973227}
   m_LocalPosition: {x: 0, y: 3.12, z: -2.2120001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2675,7 +2675,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1501644456}
-  m_LocalRotation: {x: 0.14293365, y: -0.00000001903979, z: 0.0000000027496596, w: 0.98973227}
+  m_LocalRotation: {x: 0.14293365, y: 0.000000019039792, z: -0.0000000027496598, w: 0.98973227}
   m_LocalPosition: {x: 0, y: 3.12, z: -2.2120001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2894,7 +2894,7 @@ MonoBehaviour:
   - {fileID: 2149981864315834989, guid: a65bdfa1bd5da7c4f8c3162275885995, type: 3}
   - {fileID: 2149981864315834989, guid: 790d51955f00a2a428c56f392a637bdd, type: 3}
   health: 9
-  difficulty: 2
+  difficulty: 1
 --- !u!4 &1673549065
 Transform:
   m_ObjectHideFlags: 0
