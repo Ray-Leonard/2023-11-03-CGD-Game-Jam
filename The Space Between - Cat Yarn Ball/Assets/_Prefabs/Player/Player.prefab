@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minForwardSpeed: 5
-  maxForwardSpeed: 12
+  maxForwardSpeed: 9
   horizontalStep: 2
   horizontalSmoothFactor: 10
   jumpForce: 5

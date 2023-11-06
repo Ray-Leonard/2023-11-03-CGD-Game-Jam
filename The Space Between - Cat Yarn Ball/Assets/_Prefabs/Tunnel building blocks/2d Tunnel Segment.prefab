@@ -1099,7 +1099,7 @@ MonoBehaviour:
     type: 3}
   traps:
   - {fileID: 2149981864315834989, guid: 3aecf74b6ee4304429c3c88f84926e9c, type: 3}
-  difficultyMultiplier: 2
+  difficultyMultiplier: 0.5
   generateTraps: 1
   generateBalls: 0
 --- !u!1 &3374761004638112927
