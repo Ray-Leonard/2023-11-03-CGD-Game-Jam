@@ -28,8 +28,9 @@ public class StatManager : SingletonMonoBehaviour<StatManager>
     // health
     [SerializeField] private int health = 9;
 
+    [Space]
 
-
+    [SerializeField] private Difficulty difficulty = Difficulty.Normal;
 
     // events
     public event Action OnPlayerDead;
@@ -100,7 +101,7 @@ public class StatManager : SingletonMonoBehaviour<StatManager>
     /// <returns></returns>
     public float GetLevelDifficulty()
     {
-        return (float)(score+1) / winScore;
+        return (float)(score+1) / winScore / (float)difficulty;
     }
 
 
@@ -147,4 +148,10 @@ public class StatManager : SingletonMonoBehaviour<StatManager>
 
 
 
+}
+
+[System.Serializable]
+public enum Difficulty{
+    Normal = 1,
+    Easy = 2
 }
