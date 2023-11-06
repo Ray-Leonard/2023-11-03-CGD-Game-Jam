@@ -495,7 +495,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 433043018}
-  m_LocalRotation: {x: 0.14293365, y: -0.00000001903979, z: 0.0000000027496596, w: 0.98973227}
+  m_LocalRotation: {x: 0.14293365, y: 0.000000019039792, z: -0.0000000027496598, w: 0.98973227}
   m_LocalPosition: {x: 0, y: 3.12, z: -2.2120001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2675,7 +2675,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1501644456}
-  m_LocalRotation: {x: 0.14293365, y: -0.00000001903979, z: 0.0000000027496596, w: 0.98973227}
+  m_LocalRotation: {x: 0.14293365, y: 0.000000019039792, z: -0.0000000027496598, w: 0.98973227}
   m_LocalPosition: {x: 0, y: 3.12, z: -2.2120001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3647,41 +3647,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TunnleGenerator
       objectReference: {fileID: 0}
-    - target: {fileID: 9154619637330679578, guid: 970fdc31cafc8304991611436164aaa3,
-        type: 3}
-      propertyPath: endTunnelSettings
-      value: 
-      objectReference: {fileID: 11400000, guid: 905d315587b8f8b499ec76ae67c3a85e,
-        type: 2}
-    - target: {fileID: 9154619637330679578, guid: 970fdc31cafc8304991611436164aaa3,
-        type: 3}
-      propertyPath: baseTunnelSettings
-      value: 
-      objectReference: {fileID: 11400000, guid: 2d444b99e5601364dbd37405d75dde46,
-        type: 2}
-    - target: {fileID: 9154619637330679578, guid: 970fdc31cafc8304991611436164aaa3,
-        type: 3}
-      propertyPath: multiTunnelSettings.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9154619637330679578, guid: 970fdc31cafc8304991611436164aaa3,
-        type: 3}
-      propertyPath: multiTunnelSettings.Array.data[1]
-      value: 
-      objectReference: {fileID: 11400000, guid: 0b85c658ef752ef4d9047805f2efbd04,
-        type: 2}
-    - target: {fileID: 9154619637330679578, guid: 970fdc31cafc8304991611436164aaa3,
-        type: 3}
-      propertyPath: multiTunnelSettings.Array.data[2]
-      value: 
-      objectReference: {fileID: 11400000, guid: 85bef7b564b37464fad6e19711da2b3d,
-        type: 2}
-    - target: {fileID: 9154619637330679578, guid: 970fdc31cafc8304991611436164aaa3,
-        type: 3}
-      propertyPath: multiTunnelSettings.Array.data[3]
-      value: 
-      objectReference: {fileID: 11400000, guid: e9aa7279d39a4fa47879c339d46f1980,
-        type: 2}
     - target: {fileID: 9154619637330679579, guid: 970fdc31cafc8304991611436164aaa3,
         type: 3}
       propertyPath: m_RootOrder

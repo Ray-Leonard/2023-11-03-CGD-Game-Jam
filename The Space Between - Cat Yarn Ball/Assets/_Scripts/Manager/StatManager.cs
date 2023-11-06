@@ -100,7 +100,7 @@ public class StatManager : SingletonMonoBehaviour<StatManager>
     /// <returns></returns>
     public float GetLevelDifficulty()
     {
-        return (float)(score+1) / winScore / 3;
+        return (float)(score+1) / winScore;
     }
 
 

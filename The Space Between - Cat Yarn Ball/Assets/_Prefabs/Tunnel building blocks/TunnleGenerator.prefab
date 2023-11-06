@@ -52,6 +52,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e9aa7279d39a4fa47879c339d46f1980, type: 2}
   - {fileID: 11400000, guid: 0b85c658ef752ef4d9047805f2efbd04, type: 2}
   currentHole: {fileID: 0}
+  endTunnelSettings: {fileID: 11400000, guid: 905d315587b8f8b499ec76ae67c3a85e, type: 2}
   lightPrefab: {fileID: 9113463094628302654, guid: 026b91239937ee249979fdd7772a5f3b,
     type: 3}
   lightFrequencyMin: 1

@@ -15,7 +15,7 @@ public class TunnelSegment : MonoBehaviour
     [SerializeField] private GameObject holeSign;
     [SerializeField] private GameObject[] traps;
 
-    [SerializeField] private int difficultyMultiplier = 1;
+    [SerializeField] private float difficultyMultiplier = 1;
 
     public bool generateTraps = true;
     public bool generateBalls = true;
@@ -119,7 +119,7 @@ public class TunnelSegment : MonoBehaviour
         // query the level difficulty
         float difficulty = StatManager.Instance.GetLevelDifficulty();
         // decide if generate trap
-        if(Random.Range(0f, 1f) * difficultyMultiplier > difficulty * 0.5f)
+        if(Random.Range(0f, 1f) > difficulty * 0.5f * difficultyMultiplier)
         {
             return;
         }
