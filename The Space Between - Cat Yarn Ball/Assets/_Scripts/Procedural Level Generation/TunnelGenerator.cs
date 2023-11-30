@@ -26,7 +26,7 @@ public class TunnelGenerator : SingletonMonoBehaviour<TunnelGenerator>
     [SerializeField] private int lightFrequencyMax;    // generate a light every lightFrequency segment.
 
     [Header("Materials")]
-    [SerializeField] private Material[] tunnelMaterialBank;
+    [SerializeField] private SO_TunnelVisualSettings[] visualSettingsList;
 
 
     private void Start()
@@ -64,7 +64,10 @@ public class TunnelGenerator : SingletonMonoBehaviour<TunnelGenerator>
         // generate random length of the tunnel
         int segmentCount = Random.Range(lengthMin, lengthMax);
         int lightFrequency = Random.Range(lightFrequencyMin, lightFrequencyMax + 1);
-        int materialIndex = Random.Range(0, tunnelMaterialBank.Length);
+
+        SO_TunnelVisualSettings tunnelVisual = visualSettingsList[Random.Range(0, visualSettingsList.Length)];
+        Material mat = tunnelVisual.cellingMaterial;
+
         // generate tunnel segments to make a tunnel
         for (int i = 0; i < segmentCount; ++i)
         {
@@ -84,7 +87,7 @@ public class TunnelGenerator : SingletonMonoBehaviour<TunnelGenerator>
                 lightTransform.position = segmentTransform.position + 1.5f * segmentLength * segmentTransform.up;
             }
             // apply material to tunnel
-            segmentScript.ApplyMaterial(tunnelMaterialBank[materialIndex]);
+            segmentScript.ApplyMaterial(mat);
         }
 
 
@@ -127,10 +130,14 @@ public class TunnelGenerator : SingletonMonoBehaviour<TunnelGenerator>
             PlayerControl3d player = PlayerControl3d.Instance;
             player.playerControlSettings = tunnelSettings.playerControlSettings;
 
+            RenderSettings.fogColor = tunnelVisual.fogColor;
+            RenderSettings.fog = tunnelVisual.hasFog;
+
             if (tunnelSettings.EngGameTunnel)
             {
                 GameStateManager.Instance.StartEndGame();
                 PlayerVisualControl.Instance.Set3DModel();
+                RenderSettings.fog = false;
             }
             else
             {

@@ -54,7 +54,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: b3a18e4d043c7b24d9784eaa8a0c5fe6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -100,6 +100,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   sound: {fileID: 8300000, guid: 97ec73e00f4a62440a3bda8c01765e91, type: 3}
+  hasMoveY: 0
+  rotate: 0
 --- !u!65 &2125065586607766968
 BoxCollider:
   m_ObjectHideFlags: 0
